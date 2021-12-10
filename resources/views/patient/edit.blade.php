@@ -90,7 +90,7 @@
                     <div class="form-group row">
                       <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Address') }}</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputPassword3" name="adress" value="{{ $patient->Patient->adress }}">
+                        <input type="text" class="form-control" id="inputPassword3" name="address" value="{{ $patient->Patient->address }}">
                       </div>
                     </div>
                     <div class="form-group row">

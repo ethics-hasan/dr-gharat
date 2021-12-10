@@ -45,7 +45,7 @@
                   <label for="PaymentMode">{{ __('sentence.Payment Mode') }}</label>
                   <select class="form-control" name="payment_mode" id="PaymentMode">
                      <option value="Cash">{{ __('sentence.Cash') }}</option>
-                     <option value="Cheque">{{ __('sentence.Cheque') }}</option>
+                     <option value="UPI">{{ __('sentence.UPI') }}</option>
                   </select>
                </div>
                <div class="form-group">
@@ -53,6 +53,7 @@
                   <select class="form-control" name="payment_status">
                      <option value="Paid">{{ __('sentence.Paid') }}</option>
                      <option value="Unpaid">{{ __('sentence.Unpaid') }}</option>
+                     <option value="Balance">{{ __('sentence.Balance') }}</option>
                   </select>
                </div>
                <div class="form-group">
@@ -91,7 +92,7 @@
     <div class="col">
        <div class="input-group mb-3">
           <div class="input-group-prepend">
-             <span class="input-group-text" id="basic-addon1">$</span>
+             <span class="input-group-text" id="basic-addon1">₹</span>
           </div>
           <input type="text" class="form-control" placeholder="{{ __('sentence.Amount') }}" aria-label="Amount" aria-describedby="basic-addon1" name="invoice_amount[]">
        </div>

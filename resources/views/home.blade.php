@@ -122,7 +122,7 @@
                   </div>
                </div>
                <div class="col-auto">
-                  <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                  <i class="fas fa-rupee-sign fa-2x text-gray-300"></i>
                </div>
             </div>
          </div>
@@ -138,7 +138,7 @@
                   <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_payments_year }} {{ App\Setting::get_option('currency') }}</div>
                </div>
                <div class="col-auto">
-                  <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                  <i class="fas fa-rupee-sign fa-2x text-gray-300"></i>
                </div>
             </div>
          </div>

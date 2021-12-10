@@ -130,7 +130,7 @@
                <!-- Nav Item - Utilities Collapse Menu -->
                <li class="nav-item">
                   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                  <i class="fas fa-fw fa-dollar-sign"></i>
+                  <i class="fas fa-fw fa-rupee-sign"></i>
                   <span><?php echo e(__('sentence.Billing')); ?></span>
                   </a>
                   <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -208,19 +208,19 @@
                   <div class="container-fluid">
                      <?php echo $__env->yieldContent('content'); ?>
                      <!-- Page Heading -->
+                     <!-- Footer -->
+                     <footer class="bg-white">
+                        <div class="container my-auto">
+                           <div class="copyright text-center my-auto">
+                              <span>Copyright &copy; Created by <a href="https://getdoctorino.papasimo.com/"> Digit93Team</a> 2020 in Algeria <i class="fa fa-heart" style="color: red;"></i></span>
+                           </div>
+                        </div>
+                     </footer>
+                     <!-- End of Footer -->
                   </div>
                   <!-- /.container-fluid -->
                </div>
                <!-- End of Main Content -->
-               <!-- Footer -->
-               <footer class="sticky-footer bg-white">
-                  <div class="container my-auto">
-                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Created by <a href="https://getdoctorino.papasimo.com/"> Digit93Team</a> 2020 in Algeria <i class="fa fa-heart" style="color: red;"></i></span>
-                     </div>
-                  </div>
-               </footer>
-               <!-- End of Footer -->
             </div>
             <!-- End of Content Wrapper -->
          </div>
