@@ -35,7 +35,7 @@ class SettingsSeeder extends Seeder
 
         DB::table('settings')->insert([
             'option_name' => 'currency',
-            'option_value' => '$',
+            'option_value' => '₹',
         ]);
 
         DB::table('settings')->insert([

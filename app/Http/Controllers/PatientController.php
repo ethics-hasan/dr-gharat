@@ -37,7 +37,7 @@ class PatientController extends Controller
     	return view('patient.edit',['patient' => $patient]);
     }
 
-        public function store_edit(Request $request){
+    public function store_edit(Request $request){
 
     	$validatedData = $request->validate([
         	'name' => ['required', 'string', 'max:255'],
@@ -77,9 +77,8 @@ class PatientController extends Controller
     	$validatedData = $request->validate([
         	'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'birthday' => ['required'],
+            'phone' => ['required'],
             'gender' => ['required'],
-
     	]);
 
     	$user = new User();
@@ -95,9 +94,9 @@ class PatientController extends Controller
 		$patient->phone = $request->phone;
 		$patient->gender = $request->gender;
 		$patient->blood = $request->blood;
-		$patient->adress = $request->adress;
-		$patient->weight = $request->weight;
-		$patient->height = $request->height;
+		$patient->address = $request->address;
+		$patient->history = $request->history;
+		$patient->reason = $request->reason;
 		$patient->save();
 
 		return Redirect::route('patient.all')->with('success', __('sentence.Patient Created Successfully'));

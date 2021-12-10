@@ -48,13 +48,13 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Birthday') }}<font color="red">*</font></label>
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Birthday') }}</label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" id="birthday" name="birthday" autocomplete="off">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Phone') }}</label>
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Phone') }}<font color="red">*</font></label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" id="inputPassword3" name="phone">
                       </div>
@@ -87,19 +87,19 @@
                     <div class="form-group row">
                       <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Address') }}</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputPassword3" name="adress">
+                        <input type="text" class="form-control" id="inputPassword3" name="address">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Patient Weight') }}</label>
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Patient History') }}</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputPassword3" name="weight">
+                        <input type="text" class="form-control" id="inputPassword3" name="history">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Patient Height') }}</label>
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Reason/Problem') }}</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputPassword3" name="height">
+                        <input type="text" class="form-control" id="inputPassword3" name="reason">
                       </div>
                     </div>
                     <div class="form-group row">

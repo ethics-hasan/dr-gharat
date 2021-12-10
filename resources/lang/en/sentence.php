@@ -107,6 +107,8 @@ return [
    'Male' => 'Male',
    'Patient Weight' => 'Patient Weight',
    'Patient Height' => 'Patient Height',
+   'Patient History' => 'Patient History',
+   'Reason/Problem' => 'Reason/Problem',
    'On' => 'On',
    'Years' => 'Years',
    'Content' => 'Content',
