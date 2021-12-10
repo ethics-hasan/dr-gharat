@@ -34,8 +34,8 @@
                   @isset($patient->Patient->phone)
                   <p><b>Phone :</b> {{ $patient->Patient->phone }}</p>
                   @endisset
-                  @isset($patient->Patient->adress)
-                  <p><b>Address :</b> {{ $patient->Patient->adress }}</p>
+                  @isset($patient->Patient->address)
+                  <p><b>Address :</b> {{ $patient->Patient->address }}</p>
                   @endisset
                </div>
             </div>

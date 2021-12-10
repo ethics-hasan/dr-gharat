@@ -44,22 +44,22 @@ Route::get('/appointment/checkslots/{id}','AppointmentController@checkslots');
 Route::get('/appointment/delete/{id}','AppointmentController@destroy')->where('id', '[0-9]+');
 Route::post('/appointment/edit', 'AppointmentController@store_edit')->name('appointment.store_edit');
 
-//Drugs
-Route::get('/drug/create', 'DrugController@create')->name('drug.create');
-Route::post('/drug/create', 'DrugController@store')->name('drug.store');
-Route::get('/drug/edit/{id}', 'DrugController@edit')->where('id', '[0-9]+')->name('drug.edit');
-Route::post('/drug/edit', 'DrugController@store_edit')->name('drug.store_edit');
-Route::get('/drug/all', 'DrugController@all')->name('drug.all');
-Route::get('/drug/delete/{id}','DrugController@destroy');
+//Medicines
+Route::get('/medicine/create', 'MedicineController@create')->name('medicine.create');
+Route::post('/medicine/create', 'MedicineController@store')->name('medicine.store');
+Route::get('/medicine/edit/{id}', 'MedicineController@edit')->where('id', '[0-9]+')->name('medicine.edit');
+Route::post('/medicine/edit', 'MedicineController@store_edit')->name('medicine.store_edit');
+Route::get('/medicine/all', 'MedicineController@all')->name('medicine.all');
+Route::get('/medicine/delete/{id}','MedicineController@destroy');
 
 
-//Tests
-Route::get('/test/create', 'TestController@create')->name('test.create');
-Route::post('/test/create', 'TestController@store')->name('test.store');
-Route::get('/test/edit/{id}', 'TestController@edit')->name('test.edit');
-Route::post('/test/edit', 'TestController@store_edit')->name('test.store_edit');
-Route::get('/test/all', 'TestController@all')->name('test.all');
-Route::get('/test/delete/{id}', 'TestController@destroy')->where('id', '[0-9]+');
+//Treatments
+Route::get('/treatment/create', 'TreatmentController@create')->name('treatment.create');
+Route::post('/treatment/create', 'TreatmentController@store')->name('treatment.store');
+Route::get('/treatment/edit/{id}', 'TreatmentController@edit')->name('treatment.edit');
+Route::post('/treatment/edit', 'TreatmentController@store_edit')->name('treatment.store_edit');
+Route::get('/treatment/all', 'TreatmentController@all')->name('treatment.all');
+Route::get('/treatment/delete/{id}', 'TreatmentController@destroy')->where('id', '[0-9]+');
 
 //Prescriptions
 Route::get('/prescription/create', 'PrescriptionController@create')->name('prescription.create');

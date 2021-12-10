@@ -95,12 +95,12 @@
                <li class="nav-item">
                   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                   <i class="fas fa-fw fa-syringe"></i>
-                  <span>{{ __('sentence.Drugs') }}</span>
+                  <span>{{ __('sentence.Medicines') }}</span>
                   </a>
                   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                      <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('drug.create') }}">{{ __('sentence.Add Drug') }}</a>
-                        <a class="collapse-item" href="{{ route('drug.all') }}">{{ __('sentence.All Drugs') }}</a>
+                        <a class="collapse-item" href="{{ route('medicine.create') }}">{{ __('sentence.Add Medicine') }}</a>
+                        <a class="collapse-item" href="{{ route('medicine.all') }}">{{ __('sentence.All Medicines') }}</a>
                      </div>
                   </div>
                </li>
@@ -108,12 +108,12 @@
                <li class="nav-item">
                   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTests" aria-expanded="true" aria-controls="collapseTests">
                   <i class="fas fa-fw fa-heartbeat"></i>
-                  <span>{{ __('sentence.Tests') }}</span>
+                  <span>{{ __('sentence.Treatments') }}</span>
                   </a>
                   <div id="collapseTests" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                      <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('test.create') }}">{{ __('sentence.Add Test') }}</a>
-                        <a class="collapse-item" href="{{ route('test.all') }}">{{ __('sentence.All Tests') }}</a>
+                        <a class="collapse-item" href="{{ route('treatment.create') }}">{{ __('sentence.Add Treatment') }}</a>
+                        <a class="collapse-item" href="{{ route('treatment.all') }}">{{ __('sentence.All Treatments') }}</a>
                      </div>
                   </div>
                </li>

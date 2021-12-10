@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Drug;
+use App\Medicine;
 use App\User;
 use App\Patient;
 use App\Prescription;
-use App\Prescription_drug;
-use App\Prescription_test;
-use App\Test;
+use App\PrescriptionMedicine;
+use App\PrescriptionTreatment;
+use App\Treatment;
 use Redirect;
 use PDF;
 class PrescriptionController extends Controller{
@@ -21,21 +21,21 @@ class PrescriptionController extends Controller{
 
 
     public function create(){
-    	$drugs = Drug::all();
+    	$medicines = Medicine::all();
         $patients = User::where('role','patient')->get();
-        $tests = Test::all();
-    	return view('prescription.create',['drugs' => $drugs, 'patients' => $patients, 'tests' => $tests]);
+        $treatments = Treatment::all();
+    	return view('prescription.create',['medicines' => $medicines, 'patients' => $patients, 'treatments' => $treatments]);
     }
 
     public function store(Request $request){
 
 	    	 $validatedData = $request->validate([
 	        	'patient_id' => ['required','exists:users,id'],
-	        	'type.*' => 'required',
-	        	'strength.*' => 'required',
-	        	'dose.*' => 'required',
-	        	'duration.*' => 'required',
-	        	'trade_name.*' => 'required',
+	        	'medicine.*' => 'required',
+	        	'medicine_description.*' => 'required',
+	        	'treatment.*' => 'required',
+	        	'treatment_description.*' => 'required',
+
 	    	]);
 
             
@@ -48,42 +48,36 @@ class PrescriptionController extends Controller{
         $prescription->save();
 
      
-    if(isset($request->type)):
-  	   	$i = count($request->type);
+    if(isset($request->medicine)):
+  	   	$i = count($request->medicine);
 
   	   	for ($x = 0; $x < $i; $x++) {
 		  
-		  echo $request->trade_name[$x];
+		  echo $request->medicine[$x];
 
-		  
+            $add_medicine = new PrescriptionMedicine;
 
-            $add_drug = new Prescription_drug;
+            $add_medicine->description = $request->medicine_description[$x];
+            $add_medicine->prescription_id = $prescription->id;
+            $add_medicine->medicine_id = $request->medicine[$x];
 
-            $add_drug->type = $request->type[$x];
-            $add_drug->strength = $request->strength[$x];
-            $add_drug->dose = $request->dose[$x];
-            $add_drug->duration = $request->duration[$x];
-            $add_drug->drug_advice = $request->drug_advice[$x];
-            $add_drug->prescription_id = $prescription->id;
-            $add_drug->drug_id = $request->trade_name[$x];
-
-            $add_drug->save();
+            $add_medicine->save();
         }
     endif;
 
-    if(isset($request->test_name)):
+    if(isset($request->treatment)):
 
-        $y = count($request->test_name);
+        $y = count($request->treatment);
 
         for ($x = 0; $x < $y; $x++) {
 
-            $add_test = new Prescription_test;
+            $add_treatment = new PrescriptionTreatment;
 
-            $add_test->test_id = $request->test_name[$x];
-            $add_test->prescription_id = $prescription->id;
-            $add_test->description = $request->description[$x];
+            $add_treatment->treatment_id = $request->treatment[$x];
+            $add_treatment->prescription_id = $prescription->id;
+            $add_treatment->description = $request->treatment_description[$x];
 
-            $add_test->save();
+            $add_treatment->save();
 
 		}
 
@@ -103,19 +97,19 @@ class PrescriptionController extends Controller{
     public function view($id){
 
     	$prescription = Prescription::findOrfail($id);
-        $prescription_drugs = Prescription_drug::where('prescription_id' ,$id)->get();
-        $prescription_tests = Prescription_test::where('prescription_id' ,$id)->get();
+        $prescription_medicines = PrescriptionMedicine::where('prescription_id' ,$id)->get();
+        $prescription_treatments = PrescriptionTreatment::where('prescription_id' ,$id)->get();
     	
-    	return view('prescription.view',['prescription' => $prescription, 'prescription_drugs' => $prescription_drugs, 'prescription_tests' => $prescription_tests]);
+    	return view('prescription.view',['prescription' => $prescription, 'prescription_medicines' => $prescription_medicines, 'prescription_treatments' => $prescription_treatments]);
     }
 
     public function pdf($id){
     	
     	$prescription = Prescription::find($id);
-    	$prescription_drugs = Prescription_drug::where('prescription_id' ,$id)->get();
+    	$prescription_medicines = PrescriptionMedicine::where('prescription_id' ,$id)->get();
     	
-    	 view()->share(['prescription' => $prescription, 'prescription_drugs' => $prescription_drugs]);
-      $pdf = PDF::loadView('prescription.pdf_view', ['prescription' => $prescription, 'prescription_drugs' => $prescription_drugs]);
+    	 view()->share(['prescription' => $prescription, 'prescription_medicines' => $prescription_medicines]);
+      $pdf = PDF::loadView('prescription.pdf_view', ['prescription' => $prescription, 'prescription_medicines' => $prescription_medicines]);
 
       // download PDF file with download method
       return $pdf->download($prescription->User->name.'_pdf.pdf');

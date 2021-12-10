@@ -50,7 +50,7 @@
                   <td>{{ $prescription->id }}</td>
                   <td><a href="{{ url('patient/view/'.$prescription->user_id) }}"> {{ $prescription->User->name }} </a></td>
                   <td class="text-center">{{ $prescription->created_at->format('d M Y H:i') }}</td>
-                  <td class="text-center"> {{ count($prescription->Drug) }} Drugs | {{ count($prescription->Test) }} Tests </td>
+                  <td class="text-center"> {{ count($prescription->Medicine) }} Medicines | {{ count($prescription->Treatment) }} Treatments </td>
                   <td class="text-center">
                      <a href="{{ url('prescription/view/'.$prescription->id) }}" class="btn btn-success btn-circle btn-sm"><i class="fa fa-eye"></i></a>
                      <a href="{{ url('prescription/pdf/'.$prescription->id) }}" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-print"></i></a>

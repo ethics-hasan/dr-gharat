@@ -13,11 +13,11 @@ class Prescription extends Model
     	        return $this->hasOne('App\User', 'id', 'user_id');
     }
 
-    public function Drug(){
-    	        return $this->belongsToMany('App\Drug','prescription_drugs');
+    public function Medicine(){
+    	        return $this->belongsToMany('App\Medicine','prescription_medicines');
     }
 
-    public function Test(){
-    	        return $this->belongsToMany('App\Test','prescription_tests');
+    public function Treatment(){
+    	        return $this->belongsToMany('App\Treatment','prescription_treatments');
     }
 }

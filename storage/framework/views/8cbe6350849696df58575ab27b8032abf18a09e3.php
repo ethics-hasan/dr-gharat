@@ -98,12 +98,12 @@
                <li class="nav-item">
                   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                   <i class="fas fa-fw fa-syringe"></i>
-                  <span><?php echo e(__('sentence.Drugs')); ?></span>
+                  <span><?php echo e(__('sentence.Medicines')); ?></span>
                   </a>
                   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                      <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo e(route('drug.create')); ?>"><?php echo e(__('sentence.Add Drug')); ?></a>
-                        <a class="collapse-item" href="<?php echo e(route('drug.all')); ?>"><?php echo e(__('sentence.All Drugs')); ?></a>
+                        <a class="collapse-item" href="<?php echo e(route('medicine.create')); ?>"><?php echo e(__('sentence.Add Medicine')); ?></a>
+                        <a class="collapse-item" href="<?php echo e(route('medicine.all')); ?>"><?php echo e(__('sentence.All Medicines')); ?></a>
                      </div>
                   </div>
                </li>
@@ -111,12 +111,12 @@
                <li class="nav-item">
                   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTests" aria-expanded="true" aria-controls="collapseTests">
                   <i class="fas fa-fw fa-heartbeat"></i>
-                  <span><?php echo e(__('sentence.Tests')); ?></span>
+                  <span><?php echo e(__('sentence.Treatments')); ?></span>
                   </a>
                   <div id="collapseTests" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                      <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo e(route('test.create')); ?>"><?php echo e(__('sentence.Add Test')); ?></a>
-                        <a class="collapse-item" href="<?php echo e(route('test.all')); ?>"><?php echo e(__('sentence.All Tests')); ?></a>
+                        <a class="collapse-item" href="<?php echo e(route('treatment.create')); ?>"><?php echo e(__('sentence.Add Treatment')); ?></a>
+                        <a class="collapse-item" href="<?php echo e(route('treatment.all')); ?>"><?php echo e(__('sentence.All Treatments')); ?></a>
                      </div>
                   </div>
                </li>

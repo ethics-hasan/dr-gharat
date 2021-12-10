@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-{{ __('sentence.Add Test') }}
+{{ __('sentence.Edit Treatment') }}
 @endsection
 
 @section('content')
@@ -27,21 +27,22 @@
    <div class="col-md-8">
       <div class="card shadow mb-4">
          <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">{{ __('sentence.Add Test') }}</h6>
+            <h6 class="m-0 font-weight-bold text-primary">{{ __('sentence.Edit Treatment') }}</h6>
          </div>
          <div class="card-body">
-            <form method="post" action="{{ route('test.create') }}">
+            <form method="post" action="{{ route('treatment.store_edit') }}">
                <div class="form-group row">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label">{{ __('sentence.Test Name') }}<font color="red">*</font></label>
+                  <label for="inputEmail3" class="col-sm-3 col-form-label">{{ __('sentence.Treatment Name') }}<font color="red">*</font></label>
                   <div class="col-sm-9">
-                     <input type="text" class="form-control" id="inputEmail3" name="test_name">
+                     <input type="text" class="form-control" id="inputEmail3" name="name" value="{{ $treatment->name }}">
                      {{ csrf_field() }}
                   </div>
                </div>
                <div class="form-group row">
                   <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Description') }}</label>
                   <div class="col-sm-9">
-                     <input type="text" class="form-control" id="inputPassword3" name="comment">
+                     <input type="text" class="form-control" id="inputPassword3" name="description" value="{{ $treatment->description }}">
+                     <input type="hidden" name="treatment_id" value="{{ $treatment->id }}">
                   </div>
                </div>
                <div class="form-group row">

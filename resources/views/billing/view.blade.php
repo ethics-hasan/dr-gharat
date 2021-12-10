@@ -40,7 +40,7 @@
                </div>
             </div>
             <!-- END ROW : Doctor informations -->
-            <!-- ROW : Drugs List -->
+            <!-- ROW : Medicines List -->
             <div class="row justify-content-center">
                <div class="col">
                   <h5 class="text-center"><b>{{ __('sentence.Invoice') }}</b></h5>
@@ -82,13 +82,13 @@
                   <hr>
                </div>
             </div>
-            <!-- ROW : Drugs List -->
+            <!-- ROW : Medicines List -->
             <div class="row justify-content-center">
                <div class="col">
                   <hr>
                </div>
             </div>
-            <!-- END ROW : Drugs List -->
+            <!-- END ROW : Medicines List -->
             <!-- ROW : Footer informations -->
             <div class="row">
                <div class="col">

@@ -47,40 +47,40 @@
                      @isset($prescription->User->Patient->gender)
                      - <b>{{ __('sentence.Gender') }} :</b> {{ __('sentence.'.$prescription->User->Patient->gender) }}
                      @endisset
-                     @isset($prescription->User->Patient->weight)
-                     - <b>{{ __('sentence.Patient Weight') }} :</b> {{ $prescription->User->Patient->weight }} Kg
+                     @isset($prescription->User->Patient->history)
+                     - <b>{{ __('sentence.History') }} :</b> {{ $prescription->User->Patient->history }}
                      @endisset
-                     @isset($prescription->User->Patient->height)
-                     - <b>{{ __('sentence.Patient Height') }} :</b> {{ $prescription->User->Patient->height }}
+                     @isset($prescription->User->Patient->reason)
+                     - <b>{{ __('sentence.Reason') }} :</b> {{ $prescription->User->Patient->reason }}
                      @endisset
                   </p>
                   <hr>
                </div>
             </div>
             <!-- END ROW : Patient informations -->
-            <!-- ROW : Drugs List -->
+            <!-- ROW : Medicines List -->
             <div class="row justify-content-center">
                <div class="col">
-                  @forelse ($prescription_drugs as $drug)
-                  <li>{{ $drug->type }} - {{ $drug->Drug->trade_name }} {{ $drug->strength }} - {{ $drug->dose }} - {{ $drug->duration }} <br> {{ $drug->drug_advice }}</li>
+                  @forelse ($prescription_medicines as $medicine)
+                  <li>{{ $medicine->Medicine->name }} - {{ $medicine->description }}</li>
                   @empty
                   @endforelse
                   <hr>
                </div>
             </div>
-            <!-- ROW : Drugs List -->
+            <!-- ROW : Medicines List -->
             <div class="row justify-content-center">
                <div class="col">
-                  <strong>{{ __('sentence.Test to do') }} </strong><br><br>
-                  @forelse ($prescription_tests as $test)
-                  <li>{{ $test->Test->test_name }} @empty(!$test->description) - {{ $test->description }} @endempty</li>
+                  <strong>{{ __('sentence.Treatment to do') }} </strong><br><br>
+                  @forelse ($prescription_treatments as $treatment)
+                  <li>{{ $treatment->Treatment->name }} @empty(!$treatment->description) - {{ $treatment->description }} @endempty</li>
                   @empty
-                  <p>{{ __('sentence.No Test Required') }}</p>
+                  <p>{{ __('sentence.No Treatment Required') }}</p>
                   @endforelse
                   <hr>
                </div>
             </div>
-            <!-- END ROW : Drugs List -->
+            <!-- END ROW : Medicines List -->
             <!-- ROW : Footer informations -->
             <div class="row">
                <div class="col">

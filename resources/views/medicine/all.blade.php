@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-{{ __('sentence.All Drugs') }}
+{{ __('sentence.All Medicines') }}
 @endsection
 
 @section('content')
@@ -24,10 +24,10 @@
    <div class="card-header py-3">
       <div class="row">
          <div class="col-8">
-            <h6 class="m-0 font-weight-bold text-primary w-75 p-2">{{ __('sentence.All Drugs') }}</h6>
+            <h6 class="m-0 font-weight-bold text-primary w-75 p-2">{{ __('sentence.All Medicines') }}</h6>
          </div>
          <div class="col-4">
-            <a href="{{ route('drug.create') }}" class="btn btn-primary float-right"><i class="fa fa-plus"></i> {{ __('sentence.Add Drug') }}</a>
+            <a href="{{ route('medicine.create') }}" class="btn btn-primary float-right"><i class="fa fa-plus"></i> {{ __('sentence.Add Medicine') }}</a>
          </div>
       </div>
    </div>
@@ -37,20 +37,20 @@
             <thead>
                <tr>
                   <th>ID</th>
-                  <th>{{ __('sentence.Trade Name') }}</th>
-                  <th>{{ __('sentence.Generic Name') }}</th>
+                  <th>{{ __('sentence.Name') }}</th>
+                  <th>{{ __('sentence.Description') }}</th>
                   <th class="text-center">{{ __('sentence.Actions') }}</th>
                </tr>
             </thead>
             <tbody>
-               @foreach($drugs as $drug)
+               @foreach($medicines as $medicine)
                <tr>
-                  <td>{{ $drug->id }}</td>
-                  <td>{{ $drug->trade_name }}</td>
-                  <td>{{ $drug->generic_name }}</td>
+                  <td>{{ $medicine->id }}</td>
+                  <td>{{ $medicine->name }}</td>
+                  <td>{{ $medicine->description }}</td>
                   <td class="text-center">
-                     <a href="{{ url('drug/edit/'.$drug->id) }}" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pen"></i></a>
-                     <a href="{{ url('drug/delete/'.$drug->id) }}" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
+                     <a href="{{ url('medicine/edit/'.$medicine->id) }}" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pen"></i></a>
+                     <a href="{{ url('medicine/delete/'.$medicine->id) }}" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
                   </td>
                </tr>
                @endforeach

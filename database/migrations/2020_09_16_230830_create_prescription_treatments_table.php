@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePrescriptionTestsTable extends Migration
+class CreatePrescriptionTreatmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreatePrescriptionTestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('prescription_tests', function (Blueprint $table) {
+        Schema::create('prescription_treatments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('prescription_id')
                   ->constrained()
                   ->onDelete('cascade');
 
-            $table->foreignId('test_id')
+            $table->foreignId('treatment_id')
                   ->constrained()
                   ->onDelete('cascade');
 
+            $table->string('name')->nullable();
             $table->mediumText('description')->nullable();
             $table->timestamps();
         });
@@ -35,6 +36,6 @@ class CreatePrescriptionTestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prescription_tests');
+        Schema::dropIfExists('prescription_treatments');
     }
 }

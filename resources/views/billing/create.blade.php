@@ -32,8 +32,8 @@
             </div>
             <div class="card-body">
                <div class="form-group">
-                  <label for="drug">{{ __('sentence.Select Patient') }}</label>
-                  <select class="form-control select2 select2-hidden-accessible" id="drug" tabindex="-1" name="patient_id" aria-hidden="true">
+                  <label for="medicine">{{ __('sentence.Select Patient') }}</label>
+                  <select class="form-control select2 select2-hidden-accessible" id="medicine" tabindex="-1" name="patient_id" aria-hidden="true">
                      <option></option>
                      @foreach($patients as $patient)
                      <option value="{{ $patient->id }}">{{ $patient->name }}</option>

@@ -36,7 +36,7 @@
                                     </div>
                                  </div>
                                  <!-- END ROW : Doctor informations -->
-                                 <!-- ROW : Drugs List -->
+                                 <!-- ROW : Medicines List -->
                                  <div class="row justify-content-center">
                                     <div class="col">
                                        <hr>
@@ -79,12 +79,12 @@
                                        <hr>
                                     </div>
                                  </div>
-                                 <!-- ROW : Drugs List -->
+                                 <!-- ROW : Medicines List -->
                                  <div class="row justify-content-center">
                                     <div class="col">
                                     </div>
                                  </div>
-                                 <!-- END ROW : Drugs List -->
+                                 <!-- END ROW : Medicines List -->
                                  <!-- ROW : Footer informations -->
                                  <footer class="footer-nassim">
                                     <hr>
