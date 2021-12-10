@@ -45,7 +45,7 @@ class PatientController extends Controller
 		        'required', 'email', 'max:255',
 		        Rule::unique('users')->ignore($request->user_id),
 		    ],
-            'birthday' => ['required'],
+            'phone' => ['required'],
             'gender' => ['required'],
 
     	]);
@@ -61,9 +61,9 @@ class PatientController extends Controller
 										'phone' => $request->phone,
 										'gender' => $request->gender,
 										'blood' => $request->blood,
-										'adress' => $request->adress,
-										'weight' => $request->weight,
-										'height' => $request->height]);
+										'address' => $request->address,
+										'history' => $request->history,
+										'reason' => $request->reason]);
 
 		
 		

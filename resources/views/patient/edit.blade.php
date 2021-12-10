@@ -49,13 +49,13 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Birthday') }}<font color="red">*</font></label>
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Birthday') }}</label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" id="birthday" name="birthday"  value="{{ $patient->Patient->birthday }}">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Phone') }}</label>
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Phone') }}<font color="red">*</font></label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" id="inputPassword3" name="phone" value="{{ $patient->Patient->phone }}">
                       </div>

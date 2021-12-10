@@ -28,8 +28,8 @@
                             <p><b>{{ __('sentence.Phone') }} :</b> {{ $patient->Patient->phone }}</p>
                             @endisset
 
-                            @isset($patient->Patient->adress)
-                            <p><b>{{ __('sentence.Address') }} :</b> {{ $patient->Patient->adress }}</p>
+                            @isset($patient->Patient->address)
+                            <p><b>{{ __('sentence.Address') }} :</b> {{ $patient->Patient->address }}</p>
                             @endisset
                     </div>
                     <div class="col-md-8 col-sm-6">
@@ -52,12 +52,12 @@
                            
                            <div class="mt-4"></div>
 
-                            @isset($patient->Patient->weight)
-                            <p><b>{{ __('sentence.Weight') }} :</b> {{ $patient->Patient->weight }} Kg</p>
+                            @isset($patient->Patient->reason)
+                            <p><b>{{ __('sentence.Reason') }} :</b> {{ $patient->Patient->reason }}</p>
                             @endisset
 
-                            @isset($patient->Patient->height)
-                            <p><b>{{ __('sentence.Height') }} :</b> {{ $patient->Patient->height }} cm</p>
+                            @isset($patient->Patient->history)
+                            <p><b>{{ __('sentence.History') }} :</b> {{ $patient->Patient->history }}</p>
                             @endisset
 
                             @isset($patient->Patient->blood)

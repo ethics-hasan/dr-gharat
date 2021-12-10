@@ -174,5 +174,7 @@ return [
     'No Invoices Available' => 'No Invoices Available',
     'Weight' => 'Weight',
     'Height' => 'Height',
+    'Reason' => 'Reason',
+    'History' => 'History',
 
 ];
