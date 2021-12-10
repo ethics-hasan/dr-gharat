@@ -22,6 +22,8 @@ class CreateAppointmentsTable extends Migration
             $table->string('time_start');
             $table->string('time_end');
             $table->string('visited');
+            $table->mediumText('note')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

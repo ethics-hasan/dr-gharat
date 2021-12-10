@@ -100,6 +100,9 @@ class AppointmentController extends Controller
 
         $appointment = Appointment::findOrFail($request->rdv_id);
         $appointment->visited = $request->rdv_status;
+        $appointment->note = $request->note;
+        $appointment->image = $request->image;
+
         $appointment->save();
 
         return Redirect::back()->with('success', 'Appointment Updated Successfully!');

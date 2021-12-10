@@ -99,19 +99,35 @@
             </button>
          </div>
          <div class="modal-body">
-            <p><b>{{ __('sentence.Patient') }} :</b> <span id="patient_name"></span></p>
-            <p><b>{{ __('sentence.Date') }} :</b> <span id="rdv_date"></span></p>
-            <p><b>{{ __('sentence.Time Slot') }} :</b> <span id="rdv_time"></span></p>
-         </div>
-         <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">{{ __('sentence.Close') }}</button>
-            <a class="btn btn-primary text-white" onclick="event.preventDefault(); document.getElementById('rdv-form-confirm').submit();">{{ __('sentence.Confirm Appointment') }}</a>
-            <form id="rdv-form-confirm" action="{{ route('appointment.store_edit') }}" method="POST" class="d-none">
+            <form id="rdv-form-confirm" action="{{ route('appointment.store_edit') }}" method="POST">
+               <p><b>{{ __('sentence.Patient') }} :</b> <span id="patient_name"></span></p>
+               <p><b>{{ __('sentence.Date') }} :</b> <span id="rdv_date"></span></p>
+               <p><b>{{ __('sentence.Time Slot') }} :</b> <span id="rdv_time"></span></p>
+               
+               <div class="form-group row">
+                  <label for="inputPassword3" class="col-sm-12 col-form-label">{{ __("sentence.Doctor's Note") }}</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="inputPassword3" name="note">
+                  </div>
+               </div>
+
+               <div class="form-group row">
+                  <label for="inputPassword3" class="col-sm-12 col-form-label">{{ __('sentence.Image') }}</label>
+                  <div class="col-sm-12">
+                     <input type="file" class="form-control" id="inputPassword3" name="image">
+                  </div>
+               </div>
+
                <input type="hidden" name="rdv_id" id="rdv_id">
                <input type="hidden" name="rdv_status" value="1">
                @csrf
             </form>
-            <a class="btn btn-primary text-white" onclick="event.preventDefault(); document.getElementById('rdv-form-cancel').submit();">{{ __('sentence.Cancel Appointment') }}</a>
+            <a class="btn btn-sm btn-primary text-white float-right" onclick="event.preventDefault(); document.getElementById('rdv-form-confirm').submit();">{{ __('sentence.Confirm Appointment') }}</a>
+         </div>
+         <div class="modal-footer">
+            <button class="btn btn-sm btn-secondary" type="button" data-dismiss="modal">{{ __('sentence.Close') }}</button>
+            
+            <a class="btn btn-sm btn-danger text-white" onclick="event.preventDefault(); document.getElementById('rdv-form-cancel').submit();">{{ __('sentence.Cancel Appointment') }}</a>
             <form id="rdv-form-cancel" action="{{ route('appointment.store_edit') }}" method="POST" class="d-none">
                <input type="hidden" name="rdv_id" id="rdv_id2">
                <input type="hidden" name="rdv_status" value="2">

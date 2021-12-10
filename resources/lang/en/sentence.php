@@ -176,5 +176,8 @@ return [
     'Height' => 'Height',
     'Reason' => 'Reason',
     'History' => 'History',
-
+    "Doctor's Note" => "Doctor's Note",
+    'Image' => 'Image',
+    'UPI' => 'UPI',
+    'Balance' => 'Balance',
 ];
