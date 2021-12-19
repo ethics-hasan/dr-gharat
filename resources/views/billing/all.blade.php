@@ -51,7 +51,7 @@
                   <td>{{ $invoice->id }}</td>
                   <td><a href="{{ url('patient/view/'.$invoice->patient_id) }}"> {{ $invoice->Patient->name }} </a></td>
                   <td>{{ $invoice->created_at->format('d M Y') }}</td>
-                  <td> {{ $invoice->Items->sum('invoice_amount')}} {{ App\Setting::get_option('currency') }} </td>
+                  <td>{{ App\Setting::get_option('currency') }} {{ $invoice->Items->sum('invoice_amount')}}</td>
                   <td>
                      @if($invoice->payment_status == 'Unpaid')
                      <a href="#" class="btn btn-warning btn-icon-split btn-sm">

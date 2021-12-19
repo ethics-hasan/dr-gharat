@@ -52,7 +52,7 @@
                                           <tr>
                                              <td>{{ $key+1 }}</td>
                                              <td>{{ $billing_item->invoice_title }}</td>
-                                             <td align="center">{{ $billing_item->invoice_amount }} {{ App\Setting::get_option('currency') }}</td>
+                                             <td align="center">{{ App\Setting::get_option('currency') }} {{ $billing_item->invoice_amount }}</td>
                                           </tr>
                                           @empty
                                           <tr>
@@ -63,7 +63,7 @@
                                           @if(App\Setting::get_option('vat') > 0)
                                           <tr>
                                              <td colspan="2"><strong>{{ __('sentence.Sub-Total') }}</strong></td>
-                                             <td align="center"><strong>{{ $billing_items->sum('invoice_amount') }}  {{ App\Setting::get_option('currency') }}</strong></td>
+                                             <td align="center"><strong>{{ App\Setting::get_option('currency') }} {{ $billing_items->sum('invoice_amount') }}</strong></td>
                                           </tr>
                                           <tr>
                                              <td colspan="2"><strong>{{ __('sentence.VAT') }}</strong></td>
@@ -72,7 +72,7 @@
                                           @endif
                                           <tr>
                                              <td colspan="2"><strong>{{ __('sentence.Total') }}</strong></td>
-                                             <td align="center"><strong>{{ $billing_items->sum('invoice_amount') + ($billing_items->sum('invoice_amount') * App\Setting::get_option('vat')/100) }}  {{ App\Setting::get_option('currency') }}</strong></td>
+                                             <td align="center"><strong>{{ App\Setting::get_option('currency') }} {{ $billing_items->sum('invoice_amount') + ($billing_items->sum('invoice_amount') * App\Setting::get_option('vat')/100) }}</strong></td>
                                           </tr>
                                           @endempty
                                        </table>

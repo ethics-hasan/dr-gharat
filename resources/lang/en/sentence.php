@@ -179,7 +179,7 @@ return [
     "Doctor's Note" => "Doctor's Note",
     'Image' => 'Image',
     'UPI' => 'UPI',
-    'Balance' => 'Balance',
+    'Balance/Pending' => 'Balance/Pending',
     'Marital Status' => 'Marital Status',
     'Married' => 'Married',
     'Single' => 'Single',

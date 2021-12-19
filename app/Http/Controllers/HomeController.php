@@ -31,15 +31,14 @@ class HomeController extends Controller
 
         
         $total_patients = Patient::all()->count();
-        $total_patients_today = Patient::all()->wheredate('created_at', Today())->count();
+        $total_patients_today = Patient::wheredate('created_at', Today())->count();
         $total_appointments = Appointment::all()->count();
         $total_appointments_today = Appointment::wheredate('date', Today())->get();
         $total_prescriptions = Prescription::all()->count();
         $total_payments = Billing::all()->count();
         $total_payments = Billing::all()->count();
-        $total_payments_month = Billing_item::whereMonth('created_at',date('m'))->sum('invoice_amount');
-        $total_payments_month = Billing_item::whereMonth('created_at',date('m'))->sum('invoice_amount');
-        $total_payments_year = Billing_item::whereYear('created_at',date('Y'))->sum('invoice_amount');
+        $total_payments_month = Billing_item::where('invoice_status', 'Paid')->whereMonth('created_at',date('m'))->sum('invoice_amount');
+        $total_payments_year = Billing_item::where('invoice_status', 'Paid')->whereYear('created_at',date('Y'))->sum('invoice_amount');
 
         return view('home', [
             'total_patients' => $total_patients, 

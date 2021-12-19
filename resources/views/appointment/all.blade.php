@@ -107,7 +107,7 @@
                <div class="form-group row">
                   <label for="inputPassword3" class="col-sm-12 col-form-label">{{ __("sentence.Doctor's Note") }}</label>
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="inputPassword3" name="note">
+                    <textarea name="note" id="inputPassword3" rows="5" style="width: 100%"></textarea>
                   </div>
                </div>
 

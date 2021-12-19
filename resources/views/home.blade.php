@@ -117,7 +117,7 @@
                   <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">{{ __('sentence.Payments this month') }}</div>
                   <div class="row no-gutters align-items-center">
                      <div class="col-auto">
-                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $total_payments_month }} {{ App\Setting::get_option('currency') }}</div>
+                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ App\Setting::get_option('currency') }} {{ $total_payments_month }} </div>
                      </div>
                   </div>
                </div>
@@ -135,7 +135,7 @@
             <div class="row no-gutters align-items-center">
                <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">{{ __('sentence.Payments this year') }}</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_payments_year }} {{ App\Setting::get_option('currency') }}</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{ App\Setting::get_option('currency') }} {{ $total_payments_year }}</div>
                </div>
                <div class="col-auto">
                   <i class="fas fa-rupee-sign fa-2x text-gray-300"></i>

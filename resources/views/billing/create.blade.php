@@ -53,7 +53,7 @@
                   <select class="form-control" name="payment_status">
                      <option value="Paid">{{ __('sentence.Paid') }}</option>
                      <option value="Unpaid">{{ __('sentence.Unpaid') }}</option>
-                     <option value="Balance">{{ __('sentence.Balance') }}</option>
+                     <option value="Balance">{{ __('sentence.Balance/Pending') }}</option>
                   </select>
                </div>
                <div class="form-group">
@@ -97,8 +97,17 @@
           <input type="text" class="form-control" placeholder="{{ __('sentence.Amount') }}" aria-label="Amount" aria-describedby="basic-addon1" name="invoice_amount[]">
        </div>
     </div>
-    <div class="col-md-3">
-       <a type="button" class="btn btn-danger  text-white span-2 delete"><i class="fa fa-times-circle"></i> {{ __('sentence.Remove') }}</a>
+    <div class="col">
+      <div class="form-group-custom">
+         <select class="form-control" name="invoice_status[]">
+            <option value="Paid">{{ __('sentence.Paid') }}</option>
+            <option value="Balance">{{ __('sentence.Balance/Pending') }}</option>
+         </select>
+      </div>
+   </div>
+    
+    <div class="col-md-2">
+       <a type="button" class="btn btn-sm btn-danger text-white span-2 delete"><i class="fa fa-times-circle"></i> {{ __('sentence.Remove') }}</a>
     </div>
    </div>
 </script>

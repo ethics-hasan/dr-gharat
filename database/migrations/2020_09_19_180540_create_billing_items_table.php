@@ -21,6 +21,7 @@ class CreateBillingItemsTable extends Migration
 
             $table->string('invoice_title');
             $table->string('invoice_amount');
+            $table->string('invoice_status')->nullable();
             $table->timestamps();
         });
     }

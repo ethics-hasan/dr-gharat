@@ -32,9 +32,9 @@ class BillingController extends Controller
 	        	'payment_status' => 'required',
 	        	'invoice_title.*' => 'required',
 	        	'invoice_amount.*' => ['required','numeric'],
+	        	'invoice_status.*' => 'required'
 	    	]);
 
-            
 
     	$billing = new Billing;
 
@@ -58,6 +58,7 @@ class BillingController extends Controller
 
             $invoice_item->invoice_title = $request->invoice_title[$x];
             $invoice_item->invoice_amount = $request->invoice_amount[$x];
+            $invoice_item->invoice_status = $request->invoice_status[$x];
             $invoice_item->billing_id = $billing->id;
 
             $invoice_item->save();
