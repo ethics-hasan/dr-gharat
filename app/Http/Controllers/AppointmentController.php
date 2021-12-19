@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DateTime;
-use App\User;
+use App\Patient;
 use App\Appointment;
 use App\Setting;
 use Redirect;
@@ -17,7 +17,7 @@ class AppointmentController extends Controller
 
     public function create(){
 
-    	$patients = User::where('role','patient')->get();
+    	$patients = Patient::all();
 	    return view('appointment.create', ['patients' => $patients]);
     }
 
@@ -72,7 +72,7 @@ class AppointmentController extends Controller
 	public function store(Request $request){
 
 		$validatedData = $request->validate([
-        	'patient' => ['required','exists:users,id'],
+        	'patient' => ['required','exists:patients,id'],
             'rdv_time_date' => ['required'],
             'rdv_time_start' => ['required'],
             'rdv_time_end' => ['required'],
@@ -80,7 +80,7 @@ class AppointmentController extends Controller
     	]);
 
     	$appointment = new Appointment();
-		$appointment->user_id = $request->patient;
+		$appointment->patient_id = $request->patient;
 		$appointment->date = $request->rdv_time_date;
 		$appointment->time_start = $request->rdv_time_start;
 		$appointment->time_end = $request->rdv_time_end;

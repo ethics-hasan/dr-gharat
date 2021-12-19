@@ -51,8 +51,8 @@
                     <tr>
                       <td><?php echo e($patient->id); ?></td>
                       <td><a href="<?php echo e(url('patient/view/'.$patient->id)); ?>"> <?php echo e($patient->name); ?> </a></td>
-                      <td class="text-center"> <?php echo e($patient->Patient->phone); ?> </td>
-                      <td class="text-center"> <?php echo e($patient->Patient->blood); ?> </td>
+                      <td class="text-center"> <?php echo e($patient->phone); ?> </td>
+                      <td class="text-center"> <?php echo e($patient->blood); ?> </td>
                       <td class="text-center"><?php echo e($patient->created_at->format('d M Y H:i')); ?></td>
                       <td class="text-center">
                         <a href="<?php echo e(url('patient/view/'.$patient->id)); ?>" class="btn btn-success btn-circle btn-sm"><i class="fa fa-eye"></i></a>

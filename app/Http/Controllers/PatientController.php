@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use App\Patient;
 use App\Prescription;
 use App\Appointment;
@@ -22,7 +21,7 @@ class PatientController extends Controller
 
     public function all(){
 
-    	$patients = User::where('role', 'patient')->get();
+    	$patients = Patient::all();
 
     	return view('patient.all', ['patients' => $patients]);
 
@@ -33,7 +32,7 @@ class PatientController extends Controller
     }
 
     public function edit($id){
-    	$patient = User::find($id);
+    	$patient = Patient::find($id);
     	return view('patient.edit',['patient' => $patient]);
     }
 
@@ -41,29 +40,24 @@ class PatientController extends Controller
 
     	$validatedData = $request->validate([
         	'name' => ['required', 'string', 'max:255'],
-            'email' => [
-		        'required', 'email', 'max:255',
-		        Rule::unique('users')->ignore($request->user_id),
-		    ],
             'phone' => ['required'],
             'gender' => ['required'],
 
     	]);
 
-    	$user = User::find($request->user_id);
-		$user->email = $request->email;
-		$user->name = $request->name;
-		$user->update();
 
-
-		$patient = Patient::where('user_id', $request->user_id)
-		         			->update(['birthday' => $request->birthday,
-										'phone' => $request->phone,
-										'gender' => $request->gender,
-										'blood' => $request->blood,
-										'address' => $request->address,
-										'history' => $request->history,
-										'reason' => $request->reason]);
+		$patient = Patient::where('id', $request->id)
+		         	->update([
+						'name' => $request->name,
+						'birthday' => $request->birthday,
+						'phone' => $request->phone,
+						'gender' => $request->gender,
+						'marital_status' => $request->marital_status,
+						'blood' => $request->blood,
+						'address' => $request->address,
+						'history' => $request->history,
+						'reason' => $request->reason
+					]);
 
 		
 		
@@ -76,23 +70,17 @@ class PatientController extends Controller
 
     	$validatedData = $request->validate([
         	'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'phone' => ['required'],
             'gender' => ['required'],
     	]);
 
-    	$user = new User();
-		$user->password = Hash::make('doctorino123');
-		$user->email = $request->email;
-		$user->name = $request->name;
-		$user->save();
-
 
 		$patient = new Patient();
-		$patient->user_id = $user->id;
+		$patient->name = $request->name;
 		$patient->birthday = $request->birthday;
 		$patient->phone = $request->phone;
 		$patient->gender = $request->gender;
+		$patient->marital_status = $request->marital_status;
 		$patient->blood = $request->blood;
 		$patient->address = $request->address;
 		$patient->history = $request->history;
@@ -106,10 +94,10 @@ class PatientController extends Controller
 
     public function view($id){
 
-    	$patient = User::findOrfail($id);
-        $prescriptions = Prescription::where('user_id' ,$id)->OrderBy('id','Desc')->get();
-        $appointments = Appointment::where('user_id' ,$id)->OrderBy('id','Desc')->get();
-        $invoices = Billing::where('user_id' ,$id)->OrderBy('id','Desc')->get();
+    	$patient = Patient::findOrfail($id);
+        $prescriptions = Prescription::where('patient_id' ,$id)->OrderBy('id','Desc')->get();
+        $appointments = Appointment::where('patient_id' ,$id)->OrderBy('id','Desc')->get();
+        $invoices = Billing::where('patient_id' ,$id)->OrderBy('id','Desc')->get();
     	return view('patient.view', ['patient' => $patient, 'prescriptions' => $prescriptions, 'appointments' => $appointments, 'invoices' => $invoices]);
 
     }

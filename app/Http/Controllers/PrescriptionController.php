@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Medicine;
-use App\User;
 use App\Patient;
 use App\Prescription;
 use App\PrescriptionMedicine;
@@ -22,7 +21,7 @@ class PrescriptionController extends Controller{
 
     public function create(){
     	$medicines = Medicine::all();
-        $patients = User::where('role','patient')->get();
+        $patients = Patient::all();
         $treatments = Treatment::all();
     	return view('prescription.create',['medicines' => $medicines, 'patients' => $patients, 'treatments' => $treatments]);
     }
@@ -42,7 +41,7 @@ class PrescriptionController extends Controller{
 
     	$prescription = new Prescription;
 
-        $prescription->user_id = $request->patient_id;
+        $prescription->patient_id = $request->patient_id;
         $prescription->reference = 'p'.rand(10000,99999);
 
         $prescription->save();
@@ -112,7 +111,7 @@ class PrescriptionController extends Controller{
       $pdf = PDF::loadView('prescription.pdf_view', ['prescription' => $prescription, 'prescription_medicines' => $prescription_medicines]);
 
       // download PDF file with download method
-      return $pdf->download($prescription->User->name.'_pdf.pdf');
+      return $pdf->download($prescription->Patient->name.'_pdf.pdf');
     }
 
 

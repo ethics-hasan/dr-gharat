@@ -48,7 +48,7 @@
                @foreach($prescriptions as $prescription)
                <tr>
                   <td>{{ $prescription->id }}</td>
-                  <td><a href="{{ url('patient/view/'.$prescription->user_id) }}"> {{ $prescription->User->name }} </a></td>
+                  <td><a href="{{ url('patient/view/'.$prescription->patient_id) }}"> {{ $prescription->Patient->name }} </a></td>
                   <td class="text-center">{{ $prescription->created_at->format('d M Y H:i') }}</td>
                   <td class="text-center"> {{ count($prescription->Medicine) }} Medicines | {{ count($prescription->Treatment) }} Treatments </td>
                   <td class="text-center">

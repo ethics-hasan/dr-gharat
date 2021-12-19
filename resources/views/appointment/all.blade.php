@@ -49,7 +49,7 @@
                @foreach($appointments as $appointment)
                <tr>
                   <td class="text-center">{{ $appointment->id }}</td>
-                  <td><a href="{{ url('patient/view/'.$appointment->user_id) }}"> {{ $appointment->User->name }} </a></td>
+                  <td><a href="{{ url('patient/view/'.$appointment->patient_id) }}"> {{ $appointment->Patient->name }} </a></td>
                   <td> {{ $appointment->date->format('d M Y') }} </td>
                   <td> {{ $appointment->time_start }} - {{ $appointment->time_end }}</td>
                   <td class="text-center">
@@ -78,7 +78,7 @@
                   </td>
                   <td class="text-center">{{ $appointment->created_at->format('d M Y H:i') }}</td>
                   <td align="center">
-                     <a data-rdv_id="{{ $appointment->id }}" data-rdv_date="{{ $appointment->date->format('d M Y') }}" data-rdv_time_start="{{ $appointment->time_start }}" data-rdv_time_end="{{ $appointment->time_end }}" data-patient_name="{{ $appointment->User->name }}" class="btn btn-success btn-circle btn-sm text-white" data-toggle="modal" data-target="#EDITRDVModal"><i class="fas fa-check"></i></a>
+                     <a data-rdv_id="{{ $appointment->id }}" data-rdv_date="{{ $appointment->date->format('d M Y') }}" data-rdv_time_start="{{ $appointment->time_start }}" data-rdv_time_end="{{ $appointment->time_end }}" data-patient_name="{{ $appointment->Patient->name }}" class="btn btn-success btn-circle btn-sm text-white" data-toggle="modal" data-target="#EDITRDVModal"><i class="fas fa-check"></i></a>
                      <a href="{{ url('appointment/delete/'.$appointment->id) }}" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
                   </td>
                </tr>

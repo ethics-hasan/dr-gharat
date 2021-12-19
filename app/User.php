@@ -40,11 +40,6 @@ class User extends Authenticatable
     ];
 
 
-     public function Patient(){
-        return $this->hasOne('App\Patient');
-    }
-
-
     public function getNameAttribute($value)
     {
         return strtoupper($value);

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Patient;
 use App\Prescription;
 use App\Appointment;
 use App\Billing;
@@ -30,8 +30,8 @@ class HomeController extends Controller
     {
 
         
-        $total_patients = User::where('role','patient')->count();
-        $total_patients_today = User::where('role','patient')->wheredate('created_at', Today())->count();
+        $total_patients = Patient::all()->count();
+        $total_patients_today = Patient::all()->wheredate('created_at', Today())->count();
         $total_appointments = Appointment::all()->count();
         $total_appointments_today = Appointment::wheredate('date', Today())->get();
         $total_prescriptions = Prescription::all()->count();

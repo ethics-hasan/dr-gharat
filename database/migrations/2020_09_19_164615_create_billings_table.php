@@ -15,7 +15,7 @@ class CreateBillingsTable extends Migration
     {
         Schema::create('billings', function (Blueprint $table) {
             $table->id();
-             $table->foreignId('user_id')
+             $table->foreignId('patient_id')
                   ->constrained()
                   ->onDelete('cascade');
             $table->string('payment_mode')->nullable();

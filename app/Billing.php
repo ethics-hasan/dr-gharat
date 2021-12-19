@@ -9,12 +9,11 @@ class Billing extends Model
 
 	protected $table = 'billings';
 
-    public function User(){
-    	        return $this->hasOne('App\User', 'id', 'user_id');
+    public function Patient(){
+    	return $this->hasOne('App\Patient', 'id', 'patient_id');
     }
 
-    
-      public function Items(){
-    	        return $this->hasMany('App\Billing_item');
+    public function Items(){
+    	return $this->hasMany('App\Billing_item');
     }
 }

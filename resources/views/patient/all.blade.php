@@ -51,8 +51,8 @@
                     <tr>
                       <td>{{ $patient->id }}</td>
                       <td><a href="{{ url('patient/view/'.$patient->id) }}"> {{ $patient->name }} </a></td>
-                      <td class="text-center"> {{ $patient->Patient->phone }} </td>
-                      <td class="text-center"> {{ $patient->Patient->blood }} </td>
+                      <td class="text-center"> {{ $patient->phone }} </td>
+                      <td class="text-center"> {{ $patient->blood }} </td>
                       <td class="text-center">{{ $patient->created_at->format('d M Y H:i') }}</td>
                       <td class="text-center">
                         <a href="{{ url('patient/view/'.$patient->id) }}" class="btn btn-success btn-circle btn-sm"><i class="fa fa-eye"></i></a>

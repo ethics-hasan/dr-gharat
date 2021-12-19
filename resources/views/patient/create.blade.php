@@ -42,12 +42,6 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Email Adress') }}<font color="red">*</font></label>
-                      <div class="col-sm-9">
-                        <input type="email" class="form-control" id="inputPassword3" name="email">
-                      </div>
-                    </div>
-                    <div class="form-group row">
                       <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Birthday') }}</label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" id="birthday" name="birthday" autocomplete="off">
@@ -65,6 +59,15 @@
                         <select class="form-control" name="gender">
                           <option value="Male">{{ __('sentence.Male') }}</option>
                           <option value="Female">{{ __('sentence.Female') }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Marital Status') }}</label>
+                      <div class="col-sm-9">
+                        <select class="form-control" name="marital_status">
+                          <option value="Single">{{ __('sentence.Single') }}</option>
+                          <option value="Married">{{ __('sentence.Married') }}</option>
                         </select>
                       </div>
                     </div>

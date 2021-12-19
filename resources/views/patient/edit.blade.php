@@ -38,35 +38,39 @@
                       <label for="inputEmail3" class="col-sm-3 col-form-label">{{ __('sentence.Full Name') }}<font color="red">*</font></label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" id="inputEmail3" name="name" value="{{ $patient->name }}">
-                        <input type="hidden" class="form-control" id="inputEmail3" name="user_id" value="{{ $patient->id }}">
+                        <input type="hidden" class="form-control" id="inputEmail3" name="id" value="{{ $patient->id }}">
                         {{ csrf_field() }}
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Email Adress') }}<font color="red">*</font></label>
-                      <div class="col-sm-9">
-                        <input type="email" class="form-control" id="inputPassword3" name="email" value="{{ $patient->email }}">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Birthday') }}</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="birthday" name="birthday"  value="{{ $patient->Patient->birthday }}">
+                        <input type="text" class="form-control" id="birthday" name="birthday"  value="{{ $patient->birthday }}">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Phone') }}<font color="red">*</font></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputPassword3" name="phone" value="{{ $patient->Patient->phone }}">
+                        <input type="text" class="form-control" id="inputPassword3" name="phone" value="{{ $patient->phone }}">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Gender') }}<font color="red">*</font></label>
                       <div class="col-sm-9">
                         <select class="form-control" name="gender">
-                          <option value="{{ $patient->Patient->gender }}" selected="selected">{{ $patient->Patient->gender }}</option>
+                          <option value="{{ $patient->gender }}" selected="selected">{{ $patient->gender }}</option>
                           <option value="Male">{{ __('sentence.Male') }}</option>
                           <option value="Female">{{ __('sentence.Female') }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Marital Status') }}</label>
+                      <div class="col-sm-9">
+                        <select class="form-control" name="marital_status">
+                          <option value="{{ $patient->marital_status }}" selected="selected">{{ $patient->marital_status }}</option>
+                          <option value="Single">{{ __('sentence.Single') }}</option>
+                          <option value="Married">{{ __('sentence.Married') }}</option>
                         </select>
                       </div>
                     </div>
@@ -74,7 +78,7 @@
                       <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Blood Group') }}</label>
                       <div class="col-sm-9">
                         <select class="form-control" name="blood">
-                                            <option value="{{ $patient->Patient->blood }}" selected="selected">{{ $patient->Patient->blood }}</option>
+                                            <option value="{{ $patient->blood }}" selected="selected">{{ $patient->blood }}</option>
                                             <option value="Unknown">{{ __('sentence.Unknown') }}</option>
                                             <option value="A+">A+</option>
                                             <option value="A-">A-</option>
@@ -90,19 +94,19 @@
                     <div class="form-group row">
                       <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Address') }}</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputPassword3" name="address" value="{{ $patient->Patient->address }}">
+                        <input type="text" class="form-control" id="inputPassword3" name="address" value="{{ $patient->address }}">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Patient Weight') }}</label>
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Patient History') }}</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputPassword3" name="weight" value="{{ $patient->Patient->weight }}">
+                        <input type="text" class="form-control" id="inputPassword3" name="history" value="{{ $patient->history }}">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Patient Height') }}</label>
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Reason/Problem') }}</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputPassword3" name="height" value="{{ $patient->Patient->height }}">
+                        <input type="text" class="form-control" id="inputPassword3" name="reason" value="{{ $patient->reason }}">
                       </div>
                     </div>
                     <div class="form-group row">

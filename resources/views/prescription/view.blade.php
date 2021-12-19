@@ -40,18 +40,18 @@
                <div class="col">
                   <hr>
                   <p>
-                     <b>{{ __('sentence.Patient Name') }} :</b> {{ $prescription->User->name }}
-                     @isset($prescription->User->Patient->birthday)
-                     - <b>{{ __('sentence.Age') }} :</b> {{ $prescription->User->Patient->birthday }} ({{ \Carbon\Carbon::parse($prescription->User->Patient->birthday)->age }} Years)
+                     <b>{{ __('sentence.Patient Name') }} :</b> {{ $prescription->Patient->name }}
+                     @isset($prescription->Patient->birthday)
+                     - <b>{{ __('sentence.Age') }} :</b> {{ $prescription->Patient->birthday }} ({{ \Carbon\Carbon::parse($prescription->Patient->birthday)->age }} Years)
                      @endisset
-                     @isset($prescription->User->Patient->gender)
-                     - <b>{{ __('sentence.Gender') }} :</b> {{ __('sentence.'.$prescription->User->Patient->gender) }}
+                     @isset($prescription->Patient->gender)
+                     - <b>{{ __('sentence.Gender') }} :</b> {{ __('sentence.'.$prescription->Patient->gender) }}
                      @endisset
-                     @isset($prescription->User->Patient->history)
-                     - <b>{{ __('sentence.History') }} :</b> {{ $prescription->User->Patient->history }}
+                     @isset($prescription->Patient->history)
+                     - <b>{{ __('sentence.History') }} :</b> {{ $prescription->Patient->history }}
                      @endisset
-                     @isset($prescription->User->Patient->reason)
-                     - <b>{{ __('sentence.Reason') }} :</b> {{ $prescription->User->Patient->reason }}
+                     @isset($prescription->Patient->reason)
+                     - <b>{{ __('sentence.Reason') }} :</b> {{ $prescription->Patient->reason }}
                      @endisset
                   </p>
                   <hr>

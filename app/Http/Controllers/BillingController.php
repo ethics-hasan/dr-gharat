@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Patient;
 use App\Billing;
 use App\Billing_item;
 use Redirect;
@@ -18,7 +18,7 @@ class BillingController extends Controller
 
     
     public function create(){
-    	$patients = User::where('role','patient')->get();
+    	$patients = Patient::all();
 
     	return view('billing.create',['patients' => $patients]);
     }
@@ -27,7 +27,7 @@ class BillingController extends Controller
     public function store(Request $request){
 
 	    	 $validatedData = $request->validate([
-	        	'patient_id' => ['required','exists:users,id'],
+	        	'patient_id' => ['required','exists:patients,id'],
 	        	'payment_mode' => 'required',
 	        	'payment_status' => 'required',
 	        	'invoice_title.*' => 'required',
@@ -38,7 +38,7 @@ class BillingController extends Controller
 
     	$billing = new Billing;
 
-        $billing->user_id = $request->patient_id;
+        $billing->patient_id = $request->patient_id;
         $billing->payment_mode = $request->payment_mode;
         $billing->payment_status = $request->payment_status;
         $billing->reference = 'b'.rand(10000,99999);
@@ -90,6 +90,6 @@ class BillingController extends Controller
       $pdf = PDF::loadView('billing.pdf_view', ['billing' => $billing, 'billing_items' => $billing_items]);
 
       // download PDF file with download method
-      return $pdf->download($billing->User->name.'_invoice.pdf');
+      return $pdf->download($billing->Patient->name.'_invoice.pdf');
     }
 }

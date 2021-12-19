@@ -16,20 +16,20 @@
                       <center><img src="{{ asset('img/patient-icon.png') }}" class="img-profile rounded-circle img-fluid"></center>
                        <h4 class="text-center"><b>{{ $patient->name }}</b></h4>
                             <hr>
-                            @isset($patient->Patient->birthday)
-                            <p><b>{{ __('sentence.Age') }} :</b> {{ $patient->Patient->birthday }} ({{ \Carbon\Carbon::parse($patient->Patient->birthday)->age }} Years)</p>
+                            @isset($patient->birthday)
+                            <p><b>{{ __('sentence.Age') }} :</b> {{ $patient->birthday }} ({{ \Carbon\Carbon::parse($patient->birthday)->age }} Years)</p>
                             @endisset
 
-                            @isset($patient->Patient->gender)
-                            <p><b>{{ __('sentence.Gender') }} :</b> {{ __('sentence.'.$patient->Patient->gender) }}</p> 
+                            @isset($patient->gender)
+                            <p><b>{{ __('sentence.Gender') }} :</b> {{ __('sentence.'.$patient->gender) }}</p> 
                             @endisset
 
-                            @isset($patient->Patient->phone)
-                            <p><b>{{ __('sentence.Phone') }} :</b> {{ $patient->Patient->phone }}</p>
+                            @isset($patient->phone)
+                            <p><b>{{ __('sentence.Phone') }} :</b> {{ $patient->phone }}</p>
                             @endisset
 
-                            @isset($patient->Patient->address)
-                            <p><b>{{ __('sentence.Address') }} :</b> {{ $patient->Patient->address }}</p>
+                            @isset($patient->address)
+                            <p><b>{{ __('sentence.Address') }} :</b> {{ $patient->address }}</p>
                             @endisset
                     </div>
                     <div class="col-md-8 col-sm-6">
@@ -52,16 +52,16 @@
                            
                            <div class="mt-4"></div>
 
-                            @isset($patient->Patient->reason)
-                            <p><b>{{ __('sentence.Reason') }} :</b> {{ $patient->Patient->reason }}</p>
+                            @isset($patient->reason)
+                            <p><b>{{ __('sentence.Reason') }} :</b> {{ $patient->reason }}</p>
                             @endisset
 
-                            @isset($patient->Patient->history)
-                            <p><b>{{ __('sentence.History') }} :</b> {{ $patient->Patient->history }}</p>
+                            @isset($patient->history)
+                            <p><b>{{ __('sentence.History') }} :</b> {{ $patient->history }}</p>
                             @endisset
 
-                            @isset($patient->Patient->blood)
-                            <p><b>{{ __('sentence.Blood Group') }} :</b> {{ $patient->Patient->blood }}</p>
+                            @isset($patient->blood)
+                            <p><b>{{ __('sentence.Blood Group') }} :</b> {{ $patient->blood }}</p>
                             @endisset
 
                           
@@ -105,7 +105,7 @@
                                 @endif
                               </td>
                               <td align="center">
-                                <a data-rdv_id="{{ $appointment->id }}" data-rdv_date="{{ $appointment->date->format('d M Y') }}" data-rdv_time_start="{{ $appointment->time_start }}" data-rdv_time_end="{{ $appointment->time_end }}" data-patient_name="{{ $appointment->User->name }}" class="btn btn-success btn-circle btn-sm text-white" data-toggle="modal" data-target="#EDITRDVModal"><i class="fas fa-check"></i></a>
+                                <a data-rdv_id="{{ $appointment->id }}" data-rdv_date="{{ $appointment->date->format('d M Y') }}" data-rdv_time_start="{{ $appointment->time_start }}" data-rdv_time_end="{{ $appointment->time_end }}" data-patient_name="{{ $appointment->Patient->name }}" class="btn btn-success btn-circle btn-sm text-white" data-toggle="modal" data-target="#EDITRDVModal"><i class="fas fa-check"></i></a>
                                 <a href="{{ url('appointment/delete/'.$appointment->id) }}" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
                               </td>
                             </tr>

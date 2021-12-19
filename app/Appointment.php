@@ -11,7 +11,7 @@ class Appointment extends Model
 	public $dates = [ 'date'];
 
 
-	 public function User(){
-	        return $this->hasOne('App\User','id','user_id');
-	    }
+	 public function Patient(){
+	    return $this->hasOne('App\Patient','id','patient_id');
+	}
 }

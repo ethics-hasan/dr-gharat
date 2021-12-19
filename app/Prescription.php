@@ -9,8 +9,8 @@ class Prescription extends Model
 
 	protected $table = 'prescriptions';
 
-    public function User(){
-    	        return $this->hasOne('App\User', 'id', 'user_id');
+    public function Patient(){
+    	        return $this->hasOne('App\Patient', 'id', 'patient_id');
     }
 
     public function Medicine(){

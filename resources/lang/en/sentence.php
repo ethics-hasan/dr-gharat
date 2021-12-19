@@ -180,4 +180,7 @@ return [
     'Image' => 'Image',
     'UPI' => 'UPI',
     'Balance' => 'Balance',
+    'Marital Status' => 'Marital Status',
+    'Married' => 'Married',
+    'Single' => 'Single',
 ];
