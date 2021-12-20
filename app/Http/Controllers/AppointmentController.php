@@ -96,12 +96,21 @@ class AppointmentController extends Controller
         $validatedData = $request->validate([
             'rdv_id' => ['required','exists:appointments,id'],
             'rdv_status' => ['required','numeric'],
+            'note' => 'required'
         ]);
 
         $appointment = Appointment::findOrFail($request->rdv_id);
         $appointment->visited = $request->rdv_status;
         $appointment->note = $request->note;
-        $appointment->image = $request->image;
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+
+            $image->storeAs('public', $filename);
+            
+            $appointment->image = $filename;
+        };
 
         $appointment->save();
 

@@ -105,7 +105,36 @@
                                 @endif
                               </td>
                               <td align="center">
-                                <a data-rdv_id="{{ $appointment->id }}" data-rdv_date="{{ $appointment->date->format('d M Y') }}" data-rdv_time_start="{{ $appointment->time_start }}" data-rdv_time_end="{{ $appointment->time_end }}" data-patient_name="{{ $appointment->Patient->name }}" class="btn btn-success btn-circle btn-sm text-white" data-toggle="modal" data-target="#EDITRDVModal"><i class="fas fa-check"></i></a>
+                                <a 
+                                  data-rdv_id="{{ $appointment->id }}" 
+                                  data-rdv_date="{{ $appointment->date->format('d M Y') }}" 
+                                  data-rdv_time_start="{{ $appointment->time_start }}" 
+                                  data-rdv_time_end="{{ $appointment->time_end }}" 
+                                  data-patient_name="{{ $appointment->Patient->name }}"
+                                  data-patient_history="{{ $appointment->Patient->history }}"
+                                  data-patient_reason="{{ $appointment->Patient->reason }}"
+                                  data-note="{{ $appointment->note }}"
+                                  class="btn btn-success btn-circle btn-sm text-white" 
+                                  data-toggle="modal" 
+                                  data-target="#EDITRDVModal"
+                                ><i class="fas fa-check"></i></a>
+
+                              <a 
+                                data-rdv_id="{{ $appointment->id }}" 
+                                data-rdv_date="{{ $appointment->date->format('d M Y') }}" 
+                                data-rdv_time_start="{{ $appointment->time_start }}" 
+                                data-rdv_time_end="{{ $appointment->time_end }}" 
+                                data-patient_name="{{ $appointment->Patient->name }}"
+                                data-patient_history="{{ $appointment->Patient->history }}"
+                                data-patient_reason="{{ $appointment->Patient->reason }}"
+                                data-note="{{ $appointment->note }}"
+                                data-image="{{ $appointment->image }}"
+
+                                class="btn btn-warning btn-circle btn-sm text-white" 
+                                data-toggle="modal" 
+                                data-target="#VIEWRDVModal"
+                              ><i class="fas fa-eye"></i></a>
+                         
                                 <a href="{{ url('appointment/delete/'.$appointment->id) }}" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
                               </td>
                             </tr>
@@ -204,36 +233,86 @@
   <!-- Appointment Modal-->
   <div class="modal fade" id="EDITRDVModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLabel">{{ __('sentence.You are about to modify an appointment') }}</h5>
+             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">×</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <form id="rdv-form-confirm" action="{{ route('appointment.store_edit') }}" method="POST" enctype="multipart/form-data">
+                <p><b>{{ __('sentence.Patient') }} :</b> <span id="patient_name"></span></p>
+                <p><b>{{ __('sentence.Date') }} :</b> <span id="rdv_date"></span></p>
+                <p><b>{{ __('sentence.Time Slot') }} :</b> <span id="rdv_time"></span></p>
+                <p><b>{{ __('sentence.Patient History') }} :</b> <span id="patient_history"></span></p>
+                <p><b>{{ __('sentence.Reason/Problem') }} :</b> <span id="patient_reason"></span></p>
+ 
+                
+                <div class="form-group row">
+                   <label for="inputPassword3" class="col-sm-12 col-form-label">{{ __("sentence.Doctor's Note") }} <font color="red">*</font></label>
+                   <div class="col-sm-12">
+                     <textarea name="note" id="note" rows="5" style="width: 100%"></textarea>
+                   </div>
+                </div>
+ 
+                <div class="form-group row">
+                   <label for="inputPassword3" class="col-sm-12 col-form-label">{{ __('sentence.Image') }}</label>
+                   <div class="col-sm-12">
+                      <input type="file" class="form-control" id="inputPassword3" name="image">
+                   </div>
+                </div>
+ 
+                <input type="hidden" name="rdv_id" id="rdv_id">
+                <input type="hidden" name="rdv_status" value="1">
+                @csrf
+             </form>
+             <a class="btn btn-sm btn-primary text-white float-right" onclick="event.preventDefault(); document.getElementById('rdv-form-confirm').submit();">{{ __('sentence.Confirm Appointment') }}</a>
+          </div>
+          <div class="modal-footer">
+             <button class="btn btn-sm btn-secondary" type="button" data-dismiss="modal">{{ __('sentence.Close') }}</button>
+             
+             <a class="btn btn-sm btn-danger text-white" onclick="event.preventDefault(); document.getElementById('rdv-form-cancel').submit();">{{ __('sentence.Cancel Appointment') }}</a>
+             <form id="rdv-form-cancel" action="{{ route('appointment.store_edit') }}" method="POST" class="d-none">
+                <input type="hidden" name="rdv_id" id="rdv_id2">
+                <input type="hidden" name="rdv_status" value="2">
+                @csrf
+             </form>
+          </div>
+       </div>
+    </div>
+ </div>
+
+ <!-- View Modal-->
+ <div class="modal fade" id="VIEWRDVModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{ __('sentence.You are about to modify an appointment') }}</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
+           <h5 class="modal-title" id="exampleModalLabel">{{ __('sentence.Patient appointment details') }}</h5>
+           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">×</span>
+           </button>
         </div>
         <div class="modal-body">
-          <p><b>{{ __('sentence.Patient') }} :</b> <span id="patient_name"></span></p>
-          <p><b>{{ __('sentence.Date') }} :</b> <span id="rdv_date"></span></p>
-          <p><b>{{ __('sentence.Time Slot') }} :</b> <span id="rdv_time"></span></p>
+              <p><b>{{ __('sentence.Patient') }} :</b> <span id="patient_name"></span></p>
+              <p><b>{{ __('sentence.Date') }} :</b> <span id="rdv_date"></span></p>
+              <p><b>{{ __('sentence.Time Slot') }} :</b> <span id="rdv_time"></span></p>
+              <p><b>{{ __('sentence.Patient History') }} :</b> <span id="patient_history"></span></p>
+              <p><b>{{ __('sentence.Reason/Problem') }} :</b> <span id="patient_reason"></span></p>
+              <p><b>{{ __("sentence.Doctor's Note") }} :</b> <span id="note"></span></p>
+              <p>
+                  <b>{{ __('sentence.Image') }} :</b>  <br/>
+                  <img src="" id="image" width="400" height="300">
+              </p>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">{{ __('sentence.Close') }}</button>
-          <a class="btn btn-primary text-white" onclick="event.preventDefault(); document.getElementById('rdv-form-confirm').submit();">{{ __('sentence.Confirm Appointment') }}</a>
-                                                     <form id="rdv-form-confirm" action="{{ route('appointment.store_edit') }}" method="POST" class="d-none">
-                                                      <input type="hidden" name="rdv_id" id="rdv_id">
-                                                      <input type="hidden" name="rdv_status" value="1">
-                                                        @csrf
-                                                    </form>
-          <a class="btn btn-primary text-white" onclick="event.preventDefault(); document.getElementById('rdv-form-cancel').submit();">{{ __('sentence.Cancel Appointment') }}</a>
-                                                     <form id="rdv-form-cancel" action="{{ route('appointment.store_edit') }}" method="POST" class="d-none">
-                                                      <input type="hidden" name="rdv_id" id="rdv_id2">
-                                                      <input type="hidden" name="rdv_status" value="2">
-                                                        @csrf
-                                                    </form>
+           <button class="btn btn-sm btn-secondary" type="button" data-dismiss="modal">{{ __('sentence.Close') }}</button>
         </div>
-      </div>
-    </div>
+     </div>
   </div>
+</div>
+
+
 @endsection
 
 

@@ -65605,6 +65605,12 @@ var baseURL = 'http://localhost:8000';
 
     var patient_name = button.data('patient_name'); // Extract info from data-* attributes
 
+    var patient_history = button.data('patient_history'); // Extract info from data-* attributes
+
+    var patient_reason = button.data('patient_reason'); // Extract info from data-* attributes
+
+    var note = button.data('note'); // Extract info from data-* attributes
+
     var selectedPatientID = $("#patient_name").val(); // Extract info from data-* attributes
 
     var selectedPatientName = $("#patient_name option:selected").text(); // Extract info from data-* attributes
@@ -65613,6 +65619,51 @@ var baseURL = 'http://localhost:8000';
 
     var modal = $(this);
     modal.find('#patient_name').text(patient_name);
+    modal.find('#patient_history').text(patient_history);
+    modal.find('#patient_reason').text(patient_reason);
+    modal.find('#rdv_date').text(rdv_date);
+    modal.find('#rdv_time').text(rdv_time_start + ' - ' + rdv_time_end);
+    modal.find('#rdv_time_start_input').val(rdv_time_start);
+    modal.find('#rdv_time_end_input').val(rdv_time_end);
+    modal.find('#patient_input').val(selectedPatientID);
+    modal.find('#note').text(note);
+    modal.find('#rdv_id').val(rdv_id);
+    modal.find('#rdv_id2').val(rdv_id);
+  }); // Repeatables for billing and prescriptions
+
+  $('#VIEWRDVModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget); // Button that triggered the modal
+
+    var rdv_date = button.data('rdv_date'); // Extract info from data-* attributes
+
+    var rdv_id = button.data('rdv_id'); // Extract info from data-* attributes
+
+    var rdv_time_start = button.data('rdv_time_start'); // Extract info from data-* attributes
+
+    var rdv_time_end = button.data('rdv_time_end'); // Extract info from data-* attributes
+
+    var patient_name = button.data('patient_name'); // Extract info from data-* attributes
+
+    var patient_history = button.data('patient_history'); // Extract info from data-* attributes
+
+    var patient_reason = button.data('patient_reason'); // Extract info from data-* attributes
+
+    var note = button.data('note'); // Extract info from data-* attributes
+
+    var image = button.data('image'); // Extract info from data-* attributes
+
+    var selectedPatientID = $("#patient_name").val(); // Extract info from data-* attributes
+
+    var selectedPatientName = $("#patient_name option:selected").text(); // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+    var modal = $(this);
+    modal.find('#patient_name').text(patient_name);
+    modal.find('#patient_history').text(patient_history);
+    modal.find('#patient_reason').text(patient_reason);
+    modal.find('#note').text(note);
+    modal.find('#image').attr("src", baseURL + "/storage/" + image);
     modal.find('#rdv_date').text(rdv_date);
     modal.find('#rdv_time').text(rdv_time_start + ' - ' + rdv_time_end);
     modal.find('#rdv_time_start_input').val(rdv_time_start);
@@ -65620,6 +65671,7 @@ var baseURL = 'http://localhost:8000';
     modal.find('#patient_input').val(selectedPatientID);
     modal.find('#rdv_id').val(rdv_id);
     modal.find('#rdv_id2').val(rdv_id);
+
   }); // Repeatables for billing and prescriptions
 
   $(".todos_labels .repeatable").repeatable({

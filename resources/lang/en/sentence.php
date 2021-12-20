@@ -183,4 +183,5 @@ return [
     'Marital Status' => 'Marital Status',
     'Married' => 'Married',
     'Single' => 'Single',
+    'Patient appointment details' => 'Patient appointment details',
 ];

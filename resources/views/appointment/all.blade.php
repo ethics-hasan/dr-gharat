@@ -78,7 +78,19 @@
                   </td>
                   <td class="text-center">{{ $appointment->created_at->format('d M Y H:i') }}</td>
                   <td align="center">
-                     <a data-rdv_id="{{ $appointment->id }}" data-rdv_date="{{ $appointment->date->format('d M Y') }}" data-rdv_time_start="{{ $appointment->time_start }}" data-rdv_time_end="{{ $appointment->time_end }}" data-patient_name="{{ $appointment->Patient->name }}" class="btn btn-success btn-circle btn-sm text-white" data-toggle="modal" data-target="#EDITRDVModal"><i class="fas fa-check"></i></a>
+                     <a 
+                        data-rdv_id="{{ $appointment->id }}" 
+                        data-rdv_date="{{ $appointment->date->format('d M Y') }}" 
+                        data-rdv_time_start="{{ $appointment->time_start }}" 
+                        data-rdv_time_end="{{ $appointment->time_end }}" 
+                        data-patient_name="{{ $appointment->Patient->name }}"
+                        data-patient_history="{{ $appointment->Patient->history }}"
+                        data-patient_reason="{{ $appointment->Patient->reason }}"
+                        class="btn btn-success btn-circle btn-sm text-white" 
+                        data-toggle="modal" 
+                        data-target="#EDITRDVModal"
+                     ><i class="fas fa-check"></i></a>
+
                      <a href="{{ url('appointment/delete/'.$appointment->id) }}" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
                   </td>
                </tr>
@@ -99,13 +111,16 @@
             </button>
          </div>
          <div class="modal-body">
-            <form id="rdv-form-confirm" action="{{ route('appointment.store_edit') }}" method="POST">
+            <form id="rdv-form-confirm" action="{{ route('appointment.store_edit') }}" method="POST" enctype="multipart/form-data">
                <p><b>{{ __('sentence.Patient') }} :</b> <span id="patient_name"></span></p>
                <p><b>{{ __('sentence.Date') }} :</b> <span id="rdv_date"></span></p>
                <p><b>{{ __('sentence.Time Slot') }} :</b> <span id="rdv_time"></span></p>
+               <p><b>{{ __('sentence.Patient History') }} :</b> <span id="patient_history"></span></p>
+               <p><b>{{ __('sentence.Reason/Problem') }} :</b> <span id="patient_reason"></span></p>
+
                
                <div class="form-group row">
-                  <label for="inputPassword3" class="col-sm-12 col-form-label">{{ __("sentence.Doctor's Note") }}</label>
+                  <label for="inputPassword3" class="col-sm-12 col-form-label">{{ __("sentence.Doctor's Note") }} <font color="red">*</font></label>
                   <div class="col-sm-12">
                     <textarea name="note" id="inputPassword3" rows="5" style="width: 100%"></textarea>
                   </div>
