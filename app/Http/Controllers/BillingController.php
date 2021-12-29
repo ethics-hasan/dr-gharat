@@ -24,6 +24,18 @@ class BillingController extends Controller
         return view('billing.create', ['patients' => $patients]);
     }
 
+    public function edit($id)
+    {
+        $patients = Patient::all();
+        $billing = Billing::find($id);
+        $billing_items = Billing_item::where('billing_id', $id)->get();
+
+        return view('billing.edit', [
+            'patients' => $patients,
+            'billing' => $billing,
+            'billing_items' => $billing_items
+        ]);
+    }
 
     public function store(Request $request)
     {
@@ -37,35 +49,26 @@ class BillingController extends Controller
             ]);
 
 
-        $billing = new Billing();
-
-        $billing->patient_id = $request->patient_id;
-        $billing->payment_mode = $request->payment_mode;
-        $billing->payment_status = $request->payment_status;
-        $billing->reference = 'b'.rand(10000, 99999);
-
-        $billing->save();
-
+        $billing = Billing::where('id', $request->id)
+                    ->update([
+                        'patient_id' => $request->patient_id,
+                        'payment_mode' => $request->payment_mode,
+                        'payment_status' => $request->payment_status,
+                    ]);
 
         $i = count($request->invoice_title);
 
         for ($x = 0; $x < $i; $x++) {
-            echo $request->invoice_title[$x];
+            $invoice_item = Billing_item::where('id', $request->invoice_id[$x])
+                            ->update([
+                                'invoice_title' => $request->invoice_title[$x],
+                                'invoice_amount' => $request->invoice_amount[$x],
+                                'invoice_status' => $request->invoice_status[$x],
+                            ]);
+        };
 
 
-
-            $invoice_item = new Billing_item();
-
-            $invoice_item->invoice_title = $request->invoice_title[$x];
-            $invoice_item->invoice_amount = $request->invoice_amount[$x];
-            $invoice_item->invoice_status = $request->invoice_status[$x];
-            $invoice_item->billing_id = $billing->id;
-
-            $invoice_item->save();
-        }
-
-        return Redirect::route('billing.create')->with('success', 'Invoice Created Successfully!');
-        ;
+        return Redirect::route('billing.all')->with('success', 'Invoice Updated Successfully!');
     }
 
     public function store_edit(Request $request)
