@@ -49,13 +49,15 @@
                      <tr>
                         <td width="10%">#</td>
                         <td width="60%">{{ __('sentence.Item') }}</td>
-                        <td width="30%" align="center">{{ __('sentence.Amount') }}</td>
+                        <td width="15%">{{ __('sentence.Amount') }}</td>
+                        <td width="15%">Paid/Balance</td>
                      </tr>
                      @forelse ($billing_items as $key => $billing_item)
                      <tr>
                         <td>{{ $key+1 }}</td>
                         <td>{{ $billing_item->invoice_title }}</td>
-                        <td align="center">{{ App\Setting::get_option('currency') }} {{ $billing_item->invoice_amount }}</td>
+                        <td>{{ App\Setting::get_option('currency') }} {{ $billing_item->invoice_amount }}</td>
+                        <td>{{ $billing_item->invoice_status }}</td>
                      </tr>
                      @empty
                      <tr>
@@ -63,19 +65,17 @@
                      </tr>
                      @endforelse
                      @empty(!$billing_item)
-                     @if(App\Setting::get_option('vat') > 0)
-                     <tr>
-                        <td colspan="2"><strong>{{ __('sentence.Sub-Total') }}</strong></td>
-                        <td align="center"><strong>{{ App\Setting::get_option('currency') }} {{ $billing_items->sum('invoice_amount') }}</strong></td>
-                     </tr>
-                     <tr>
-                        <td colspan="2"><strong>{{ __('sentence.VAT') }}</strong></td>
-                        <td align="center"><strong> {{ App\Setting::get_option('vat') }}%</strong></td>
-                     </tr>
-                     @endif
                      <tr>
                         <td colspan="2"><strong>{{ __('sentence.Total') }}</strong></td>
-                        <td align="center"><strong>{{ App\Setting::get_option('currency') }} {{ $billing_items->sum('invoice_amount') + ($billing_items->sum('invoice_amount') * App\Setting::get_option('vat')/100) }}</strong></td>
+                        <td colspan="2"><strong>{{ App\Setting::get_option('currency') }} {{ $billing_items->sum('invoice_amount') }}</strong></td>
+                     </tr>
+                     <tr>
+                        <td colspan="2"><strong>Paid</strong></td>
+                        <td colspan="2"><strong>{{ App\Setting::get_option('currency') }} {{ $amount_paid }}</strong></td>
+                     </tr>
+                     <tr>
+                        <td colspan="2"><strong>Balance</strong></td>
+                        <td colspan="2"><strong>{{ App\Setting::get_option('currency') }} {{ $amount_balance }}</strong></td>
                      </tr>
                      @endempty
                   </table>

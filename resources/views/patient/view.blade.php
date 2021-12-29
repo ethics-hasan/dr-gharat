@@ -159,7 +159,7 @@
                               <td align="center">{{ $prescription->created_at }} </td>
                               <td align="center">
                                 <a href="{{ url('prescription/view/'.$prescription->id) }}" class="btn btn-success btn-circle btn-sm"><i class="fa fa-eye"></i></a>
-                                <a href="{{ url('prescription/pdf/'.$prescription->id) }}" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-print"></i></a>
+                                {{-- <a href="{{ url('prescription/pdf/'.$prescription->id) }}" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-print"></i></a> --}}
                                 <a href="{{ url('prescription/delete/'.$prescription->id) }}" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
                               </td>
                             </tr>
@@ -210,7 +210,7 @@
                               </td>
                               <td>
                                 <a href="{{ url('billing/view/'.$invoice->id) }}" class="btn btn-success btn-circle btn-sm"><i class="fa fa-eye"></i></a>
-                                <a href="{{ url('billing/pdf/'.$invoice->id) }}" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-print"></i></a>
+                                {{-- <a href="{{ url('billing/pdf/'.$invoice->id) }}" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-print"></i></a> --}}
                                 <a href="{{ url('billing/delete/'.$invoice->id) }}" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
                               </td>
                             </tr>

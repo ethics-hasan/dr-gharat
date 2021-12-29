@@ -40,8 +40,8 @@ Route::post('/doctor/create', 'DoctorController@store')->name('doctor.store');
 Route::get('/appointment/create', 'AppointmentController@create')->name('appointment.create');
 Route::post('/appointment/create', 'AppointmentController@store')->name('appointment.store');
 Route::get('/appointment/all', 'AppointmentController@all')->name('appointment.all');
-Route::get('/appointment/checkslots/{id}','AppointmentController@checkslots');
-Route::get('/appointment/delete/{id}','AppointmentController@destroy')->where('id', '[0-9]+');
+Route::get('/appointment/checkslots/{id}', 'AppointmentController@checkslots');
+Route::get('/appointment/delete/{id}', 'AppointmentController@destroy')->where('id', '[0-9]+');
 Route::post('/appointment/edit', 'AppointmentController@store_edit')->name('appointment.store_edit');
 
 //Medicines
@@ -50,7 +50,7 @@ Route::post('/medicine/create', 'MedicineController@store')->name('medicine.stor
 Route::get('/medicine/edit/{id}', 'MedicineController@edit')->where('id', '[0-9]+')->name('medicine.edit');
 Route::post('/medicine/edit', 'MedicineController@store_edit')->name('medicine.store_edit');
 Route::get('/medicine/all', 'MedicineController@all')->name('medicine.all');
-Route::get('/medicine/delete/{id}','MedicineController@destroy');
+Route::get('/medicine/delete/{id}', 'MedicineController@destroy');
 
 
 //Treatments
@@ -66,16 +66,18 @@ Route::get('/prescription/create', 'PrescriptionController@create')->name('presc
 Route::post('/prescription/create', 'PrescriptionController@store')->name('prescription.store');
 Route::get('/prescription/all', 'PrescriptionController@all')->name('prescription.all');
 Route::get('/prescription/view/{id}', 'PrescriptionController@view')->where('id', '[0-9]+')->name('prescription.view');
-Route::get('/prescription/pdf/{id}','PrescriptionController@pdf')->where('id', '[0-9]+');
-Route::get('/prescription/delete/{id}','PrescriptionController@destroy');
+Route::get('/prescription/pdf/{id}', 'PrescriptionController@pdf')->where('id', '[0-9]+');
+Route::get('/prescription/delete/{id}', 'PrescriptionController@destroy');
 
 //Billing
 Route::get('/billing/create', 'BillingController@create')->name('billing.create');
 Route::post('/billing/create', 'BillingController@store')->name('billing.store');
 Route::get('/billing/all', 'BillingController@all')->name('billing.all');
 Route::get('/billing/view/{id}', 'BillingController@view')->where('id', '[0-9]+')->name('billing.view');
-Route::get('/billing/pdf/{id}','BillingController@pdf')->where('id', '[0-9]+');
-Route::get('/billing/delete/{id}','BillingController@destroy');
+Route::get('/billing/pdf/{id}', 'BillingController@pdf')->where('id', '[0-9]+');
+Route::get('/billing/delete/{id}', 'BillingController@destroy');
+Route::get('/billing/edit/{id}', 'BillingController@edit')->where('id', '[0-9]+')->name('billing.edit');
+Route::post('/billing/edit', 'BillingController@store_edit')->name('billing.store_edit');
 
 //Settings
 /* Doctorino Settings */

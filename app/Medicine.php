@@ -8,5 +8,4 @@ class Medicine extends Model
 {
     protected $table = 'medicines';
     protected $fillable = ['name','description'];
-
 }

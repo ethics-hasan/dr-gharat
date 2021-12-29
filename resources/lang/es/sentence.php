@@ -28,7 +28,7 @@ return [
   'All Medicines' => 'Todos los medicamentos',
   'Medicines list' => 'Lista de medicamentos',
   'Name' => 'Nombre comercial',
-  'Description' => 'Nombre generico',  
+  'Description' => 'Nombre generico',
   'Edit Medicine' => 'Modificar un medicamento',
   'Medicine added Successfully' => '¡Medicamento agregado con éxito!',
   'Medicine Edited Successfully' => '¡Medicamento actualizado con éxito!',
@@ -92,8 +92,8 @@ return [
    'Forgot Your Password' => 'Contraseña olvidada ?',
    'Remember Me' => 'Se acuerda de mi',
    'Welcome' => 'Bienvenido de nuevo !',
-   'Save' => 'Salvar',	
-   'Cancel' => 'Anular',	
+   'Save' => 'Salvar',
+   'Cancel' => 'Anular',
    'Ready to Leave' => '¿Listo para salir?',
    'Ready to Leave Msg' => 'Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.',
 
@@ -167,4 +167,4 @@ return [
     'No Invoices Available' => 'No hay factura disponible',
     'Weight' => 'Peso',
     'Height' => 'Tamaño',
-]; 
+];

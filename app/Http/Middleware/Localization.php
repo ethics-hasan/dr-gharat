@@ -16,8 +16,8 @@ class Localization
      */
     public function handle($request, Closure $next)
     {
-            App::setLocale(App\Setting::get_option('language'));
-        
+        App::setLocale(App\Setting::get_option('language'));
+
         return $next($request);
     }
 }

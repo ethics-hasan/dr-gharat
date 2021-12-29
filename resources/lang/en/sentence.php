@@ -94,7 +94,7 @@ return [
    'Remember Me' => 'Remember Me',
    'Welcome' => 'Welcome Back !',
    'Save' => 'Save',
-   'Cancel' => 'Cancel', 
+   'Cancel' => 'Cancel',
    'Ready to Leave' => 'Ready to Leave?',
    'Ready to Leave Msg' => 'Select "Logout" below if you are ready to end your current session.',
 

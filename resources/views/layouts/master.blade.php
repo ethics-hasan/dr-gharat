@@ -18,7 +18,7 @@
          <!-- Page Wrapper -->
          <div id="wrapper">
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark top-0 accordion" id="accordionSidebar">
                <!-- Sidebar - Brand -->
                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                   <div class="sidebar-brand-icon rotate-n-15">
@@ -165,9 +165,7 @@
             <!-- End of Sidebar -->
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
-               <!-- Main Content -->
-               <div id="content">
-                  <!-- Topbar -->
+               <!-- Topbar -->
                   <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                      <!-- Sidebar Toggle (Topbar) -->
                      <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -197,18 +195,19 @@
                      </ul>
                   </nav>
                   <!-- End of Topbar -->
+                  
+               <!-- Main Content -->
+               <div id="content">
                   <!-- Begin Page Content -->
                   <div class="container-fluid">
                      @yield('content')
                      <!-- Page Heading -->
                      <!-- Footer -->
-                     <footer class="bg-white">
-                        <div class="container my-auto">
-                           <div class="copyright text-center my-auto">
-                              <span>Copyright &copy; Created by <a href="https://getdoctorino.papasimo.com/"> Digit93Team</a> 2020 in Algeria <i class="fa fa-heart" style="color: red;"></i></span>
-                           </div>
+                     <div class="container mb-3">
+                        <div class="copyright text-center">
+                           <span>Copyright &copy; Created by <a href="https://getdoctorino.papasimo.com/"> Digit93Team</a> 2020 in Algeria <i class="fa fa-heart" style="color: red;"></i></span>
                         </div>
-                     </footer>
+                     </div>
                      <!-- End of Footer -->
                   </div>
                   <!-- /.container-fluid -->
