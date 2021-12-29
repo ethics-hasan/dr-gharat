@@ -42,19 +42,19 @@
                                     </span>
                                     @enderror
                                  </div>
-                                 <div class="form-group">
+                                 {{-- <div class="form-group">
                                     <div class="custom-control custom-checkbox small">
                                        <input class="custom-control-input" type="checkbox" name="remember" id="customCheck" {{ old('remember') ? 'checked' : '' }}>
                                        {{ csrf_field() }}
                                        <label class="custom-control-label" for="customCheck">{{ __('sentence.Remember Me') }}</label>
                                     </div>
-                                 </div>
+                                 </div> --}}
                                  <button class="btn btn-primary btn-user btn-block" type="submit"> {{ __('sentence.Login') }}</button> 
                               </form>
                               <hr>
                               @if(Route::has('password.request'))
                               <div class="text-center">
-                                 <a class="small" href="{{ route('password.request') }}"> {{ __('sentence.Forgot Your Password') }}</a>
+                                 {{-- <a class="small" href="{{ route('password.request') }}"> {{ __('sentence.Forgot Your Password') }}</a> --}}
                               </div>
                               @endif
                            </div>
