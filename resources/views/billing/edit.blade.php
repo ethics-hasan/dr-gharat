@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<form method="post" action="{{ route('billing.store') }}">
+<form method="post" action="{{ route('billing.store_edit') }}">
    <div class="row">
       <div class="col">
          @if ($errors->any())

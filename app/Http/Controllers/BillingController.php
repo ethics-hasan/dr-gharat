@@ -37,7 +37,7 @@ class BillingController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store_edit(Request $request)
     {
         $validatedData = $request->validate([
                 'patient_id' => ['required','exists:patients,id'],
@@ -71,7 +71,7 @@ class BillingController extends Controller
         return Redirect::route('billing.all')->with('success', 'Invoice Updated Successfully!');
     }
 
-    public function store_edit(Request $request)
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
          'patient_id' => ['required','exists:patients,id'],
@@ -111,7 +111,7 @@ class BillingController extends Controller
             $invoice_item->save();
         }
 
-        return Redirect::route('billing.create')->with('success', 'Invoice Created Successfully!');
+        return Redirect::route('billing.all')->with('success', 'Invoice Created Successfully!');
     }
 
     public function all()
