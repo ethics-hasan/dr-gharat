@@ -209,17 +209,19 @@
                   <div class="container-fluid">
                      <?php echo $__env->yieldContent('content'); ?>
                      <!-- Page Heading -->
-                     <!-- Footer -->
-                     <div class="container mb-3">
-                        <div class="copyright text-center">
-                           <span>Copyright &copy; Created by <a href="https://getdoctorino.papasimo.com/"> Digit93Team</a> 2020 in Algeria <i class="fa fa-heart" style="color: red;"></i></span>
-                        </div>
-                     </div>
-                     <!-- End of Footer -->
+                     
                   </div>
                   <!-- /.container-fluid -->
                </div>
                <!-- End of Main Content -->
+               
+               <!-- Footer -->
+               <div class="container mb-4">
+                  <div class="copyright text-center">
+                     <span>Copyright &copy; Created by <a href="https://getdoctorino.papasimo.com/"> Digit93Team</a> 2020 in Algeria <i class="fa fa-heart" style="color: red;"></i></span>
+                  </div>
+               </div>
+               <!-- End of Footer -->
             </div>
             <!-- End of Content Wrapper -->
          </div>
