@@ -36,19 +36,21 @@
                                  </div>
                                  <div class="form-group">
                                     <input id="password" type="password" class="form-control form-control-user @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="{{ __('sentence.Password') }}">
+                                   
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                  </div>
-                                 {{-- <div class="form-group">
+                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox small">
-                                       <input class="custom-control-input" type="checkbox" name="remember" id="customCheck" {{ old('remember') ? 'checked' : '' }}>
+                                       {{-- <input class="custom-control-input" type="checkbox" name="remember" id="customCheck" {{ old('remember') ? 'checked' : '' }}> --}}
                                        {{ csrf_field() }}
-                                       <label class="custom-control-label" for="customCheck">{{ __('sentence.Remember Me') }}</label>
+                                      
+                                       {{-- <label class="custom-control-label" for="customCheck">{{ __('sentence.Remember Me') }}</label> --}}
                                     </div>
-                                 </div> --}}
+                                 </div>
                                  <button class="btn btn-primary btn-user btn-block" type="submit"> {{ __('sentence.Login') }}</button> 
                               </form>
                               <hr>
