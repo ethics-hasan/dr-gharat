@@ -10,6 +10,11 @@ To install it you need to :
 6. run : php artisan db:seed --class=SettingsSeeder
 7. run : npm run watch
 8. run : php artisan storage:link
+9. edit base url in : public\js\app.js
+
+
+10. run: php artisan serve (optional)
+
 
 To connect : 
 Email : doctor@gmail.com 
