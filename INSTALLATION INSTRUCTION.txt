@@ -4,11 +4,12 @@ To install it you need to :
 
 1- Unzip pms.zip in your server
 2- run : composer install
-3- run : php artisan migrate 
+3- run : php artisan migrate OR php artisan migrate:fresh
 4- run : php artisan db:seed --class=SettingsSeeder
 5- run : npm run watch
-6 - edit base url in : resources\js\app.js
-7- Enjoy
+6- edit base url in : resources\js\app.js
+7- run : php artisan key:generate
+8- run : php artisan storage:link
 
 To connect : 
 Email : doctor@gmail.com 
