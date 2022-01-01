@@ -21,10 +21,13 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark top-0 accordion" id="accordionSidebar">
                <!-- Sidebar - Brand -->
                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
-                  <div class="sidebar-brand-icon rotate-n-15">
+                  {{-- <div class="sidebar-brand-icon rotate-n-15">
                      <i class="fas fa-user-md"></i>
                   </div>
-                  <div class="sidebar-brand-text mx-3">Doctorino <sup>1.0</sup></div>
+                  <div class="sidebar-brand-text mx-3">Doctorino <sup>1.0</sup></div> --}}
+
+                  <img src="{{ asset('img/doctor-logo.jpeg') }}" alt="Doctor Logo" width="100%" height="80">
+
                </a>
                <!-- Divider -->
                <hr class="sidebar-divider my-0">
