@@ -93,8 +93,10 @@ class BillingController extends Controller
         $billing->save();
 
 
-
-        $i = count($request->invoice_title);
+        $i = 0;
+        if ($request->invoice_title) {
+            $i = count($request->invoice_title);
+        }
 
         for ($x = 0; $x < $i; $x++) {
             echo $request->invoice_title[$x];
@@ -146,5 +148,19 @@ class BillingController extends Controller
 
         // download PDF file with download method
         return $pdf->download($billing->Patient->name.'_invoice.pdf');
+    }
+
+    public function destroy($id)
+    {
+        $billing_items = Billing_item::where('billing_id', $id)->get();
+        
+        for ($i=0; $i < count($billing_items); $i++) {
+            Billing_item::destroy($billing_items[$i]->$id);
+        }
+        
+        Billing::destroy($id);
+
+
+        return Redirect::route('billing.all')->with('success', 'Billing Deleted Successfully!');
     }
 }
