@@ -7,6 +7,12 @@ use App\Patient;
 use App\Prescription;
 use App\Appointment;
 use App\Billing;
+use App\Doctor;
+use App\Xray;
+use App\Sonography;
+use App\BloodTest;
+use App\PatientTreatment;
+
 use Hash;
 use Redirect;
 use Illuminate\Validation\Rule;
@@ -28,7 +34,17 @@ class PatientController extends Controller
 
     public function create()
     {
-        return view('patient.create');
+        $doctors = Doctor::all();
+        $xrays = Xray::all();
+        $sonographies = Sonography::all();
+        $blood_tests = BloodTest::all();
+        
+        return view('patient.create', [
+            'doctors' => $doctors, 
+            'xrays' => $xrays, 
+            'sonographies' => $sonographies, 
+            'blood_tests' => $blood_tests
+        ]);
     }
 
     public function edit($id)
@@ -72,11 +88,13 @@ class PatientController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'phone' => ['required'],
             'gender' => ['required'],
+            'doctor_id' => ['required','exists:doctors,id']
         ]);
 
 
         $patient = new Patient();
         $patient->name = $request->name;
+        $patient->doctor_id = $request->doctor_id;
         $patient->birthday = $request->birthday;
         $patient->phone = $request->phone;
         $patient->gender = $request->gender;
@@ -86,6 +104,22 @@ class PatientController extends Controller
         $patient->history = $request->history;
         $patient->reason = $request->reason;
         $patient->save();
+
+        $i = 0;
+        if ($request->xray_id) {
+            $i = count($request->xray_id);
+        }
+
+        for ($x = 0; $x < $i; $x++) {
+            $patient_treatment = new PatientTreatment();
+
+            $patient_treatment->xray_id = $request->xray_id[$x] ? $request->xray_id[$x] :  NULL;
+            $patient_treatment->sonography_id = $request->sonography_id[$x] ? $request->sonography_id[$x] : NULL;
+            $patient_treatment->blood_test_id = $request->blood_test_id[$x] ? $request->blood_test_id[$x] : NULL;
+            $patient_treatment->patient_id = $patient->id;
+
+            $patient_treatment->save();
+        }
 
         return Redirect::route('patient.all')->with('success', __('sentence.Patient Created Successfully'));
     }

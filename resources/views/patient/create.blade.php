@@ -42,6 +42,18 @@
                       </div>
                     </div>
                     <div class="form-group row">
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Referred Doctor') }}<font color="red">*</font></label>
+                      <div class="col-sm-9">
+                        <select class="form-control" name="doctor_id">
+                          <option value="">Select a doctor</option>
+
+                          @foreach ($doctors as $doctor)
+                              <option value="{{$doctor->id}}">{{$doctor->name}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
                       <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Birthday') }}</label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" id="birthday" name="birthday" autocomplete="off">
@@ -106,6 +118,17 @@
                       </div>
                     </div>
                     <div class="form-group row">
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Treatments') }}</label>
+                      <div class="col-sm-12">
+                        <fieldset class="treatment_labels">
+                          <div class="repeatable"></div>
+                          <div class="form-group mt-2">
+                             <a type="button" class="btn btn-success add text-white" align="center"><i class='fa fa-plus'></i> {{ __('sentence.Add More') }}</a>
+                          </div>
+                       </fieldset>
+                      </div>
+                    </div>
+                    <div class="form-group row">
                       <div class="col-sm-9">
                         <button type="submit" class="btn btn-primary">{{ __('sentence.Save') }}</button>
                       </div>
@@ -125,5 +148,46 @@
 @endsection
 
 @section('footer')
+<script type="text/template" id="treatment_labels">
+  <div class="field-group row mt-2">
+   <div class="col">
+      <div class="form-group-custom">
+         <select class="form-control" name="xray_id[]">
+          <option value="">Select a Xray</option>
+
+          @foreach ($xrays as $xray)
+              <option value="{{$xray->id}}">{{$xray->name}}</option>
+          @endforeach
+        </select>
+      </div>
+   </div>
+   <div class="col">
+    <div class="form-group-custom">
+      <select class="form-control" name="sonography_id[]">
+       <option value="">Select a Sonography</option>
+
+       @foreach ($sonographies as $sonography)
+           <option value="{{$sonography->id}}">{{$sonography->name}}</option>
+       @endforeach
+     </select>
+   </div>
+   </div>
+   <div class="col">
+    <div class="form-group-custom">
+      <select class="form-control" name="blood_test_id[]">
+       <option value="">Select a Blood Test</option>
+
+       @foreach ($blood_tests as $blood_test)
+           <option value="{{$blood_test->id}}">{{$blood_test->name}}</option>
+       @endforeach
+     </select>
+   </div>
+  </div>
+   
+   <div class="col-md-2">
+      <a type="button" class="btn btn-sm btn-danger text-white span-2 delete"><i class="fa fa-times-circle"></i> {{ __('sentence.Remove') }}</a>
+   </div>
+  </div>
+</script>
 
 @endsection

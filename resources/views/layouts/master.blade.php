@@ -79,18 +79,18 @@
                <hr class="sidebar-divider">
                <!-- Heading -->
                <div class="sidebar-heading">
-                  {{ __('sentence.Prescriptions') }}
+                  {{ __('sentence.Doctors') }}
                </div>
                <!-- Nav Item - Pages Collapse Menu -->
                <li class="nav-item">
                   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                  <i class="fas fa-fw fa-prescription"></i>
-                  <span>{{ __('sentence.Prescriptions') }}</span>
+                  <i class="fas fa-fw fa-users"></i>
+                  <span>{{ __('sentence.Doctors') }}</span>
                   </a>
                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                      <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('prescription.create') }}">{{ __('sentence.New Prescription') }}</a>
-                        <a class="collapse-item" href="{{ route('prescription.all') }}">{{ __('sentence.All Prescriptions') }}</a>
+                        <a class="collapse-item" href="{{ route('doctor.create') }}">{{ __('sentence.Add Doctor') }}</a>
+                        <a class="collapse-item" href="{{ route('doctor.all') }}">{{ __('sentence.All Doctors') }}</a>
                      </div>
                   </div>
                </li>
@@ -98,25 +98,38 @@
                <li class="nav-item">
                   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                   <i class="fas fa-fw fa-syringe"></i>
-                  <span>{{ __('sentence.Medicines') }}</span>
+                  <span>{{ __('sentence.Xrays') }}</span>
                   </a>
                   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                      <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('medicine.create') }}">{{ __('sentence.Add Medicine') }}</a>
-                        <a class="collapse-item" href="{{ route('medicine.all') }}">{{ __('sentence.All Medicines') }}</a>
+                        <a class="collapse-item" href="{{ route('xray.create') }}">{{ __('sentence.Add Xray') }}</a>
+                        <a class="collapse-item" href="{{ route('xray.all') }}">{{ __('sentence.All Xrays') }}</a>
+                     </div>
+                  </div>
+               </li>
+               <!-- Nav Item - Pages Collapse Menu -->
+               <li class="nav-item">
+                  <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseSonography" aria-expanded="true" aria-controls="collapseSonography">
+                  <i class="fas fa-fw fa-heartbeat"></i>
+                  <span>{{ __('sentence.Sonography') }}</span>
+                  </a>
+                  <div id="collapseSonography" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                     <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('sonography.create') }}">{{ __('sentence.Add Sonography') }}</a>
+                        <a class="collapse-item" href="{{ route('sonography.all') }}">{{ __('sentence.All Sonography') }}</a>
                      </div>
                   </div>
                </li>
                <!-- Nav Item - Pages Collapse Menu -->
                <li class="nav-item">
                   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTests" aria-expanded="true" aria-controls="collapseTests">
-                  <i class="fas fa-fw fa-heartbeat"></i>
-                  <span>{{ __('sentence.Treatments') }}</span>
+                  <i class="fas fa-fw fa-syringe"></i>
+                  <span>{{ __('sentence.Blood Tests') }}</span>
                   </a>
                   <div id="collapseTests" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                      <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('treatment.create') }}">{{ __('sentence.Add Treatment') }}</a>
-                        <a class="collapse-item" href="{{ route('treatment.all') }}">{{ __('sentence.All Treatments') }}</a>
+                        <a class="collapse-item" href="{{ route('blood_test.create') }}">{{ __('sentence.Add Blood Test') }}</a>
+                        <a class="collapse-item" href="{{ route('blood_test.all') }}">{{ __('sentence.All Blood Tests') }}</a>
                      </div>
                   </div>
                </li>

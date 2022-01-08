@@ -65674,6 +65674,13 @@ var baseURL = 'http://localhost:8000';
 
   }); // Repeatables for billing and prescriptions
 
+  $(".treatment_labels .repeatable").repeatable({
+    addTrigger: ".treatment_labels .add",
+    deleteTrigger: ".treatment_labels .delete",
+    template: "#treatment_labels",
+    startWith: 1,
+    max: 5
+  });
   $(".todos_labels .repeatable").repeatable({
     addTrigger: ".todos_labels .add",
     deleteTrigger: ".todos_labels .delete",

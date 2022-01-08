@@ -32,10 +32,6 @@ Route::get('/patient/view/{id}', 'PatientController@view')->where('id', '[0-9]+'
 Route::get('/patient/edit/{id}', 'PatientController@edit')->where('id', '[0-9]+')->name('patient.edit');
 Route::post('/patient/edit', 'PatientController@store_edit')->name('patient.store_edit');
 
-//Doctor
-Route::get('/doctor/edit/{id}', 'DoctorController@create')->where('id', '[0-9]+')->name('doctor.create');
-Route::post('/doctor/create', 'DoctorController@store')->name('doctor.store');
-
 //Appointments
 Route::get('/appointment/create', 'AppointmentController@create')->name('appointment.create');
 Route::post('/appointment/create', 'AppointmentController@store')->name('appointment.store');
@@ -44,30 +40,38 @@ Route::get('/appointment/checkslots/{id}', 'AppointmentController@checkslots');
 Route::get('/appointment/delete/{id}', 'AppointmentController@destroy')->where('id', '[0-9]+');
 Route::post('/appointment/edit', 'AppointmentController@store_edit')->name('appointment.store_edit');
 
-//Medicines
-Route::get('/medicine/create', 'MedicineController@create')->name('medicine.create');
-Route::post('/medicine/create', 'MedicineController@store')->name('medicine.store');
-Route::get('/medicine/edit/{id}', 'MedicineController@edit')->where('id', '[0-9]+')->name('medicine.edit');
-Route::post('/medicine/edit', 'MedicineController@store_edit')->name('medicine.store_edit');
-Route::get('/medicine/all', 'MedicineController@all')->name('medicine.all');
-Route::get('/medicine/delete/{id}', 'MedicineController@destroy');
+//Doctors
+Route::get('/doctor/create', 'DoctorController@create')->name('doctor.create');
+Route::post('/doctor/create', 'DoctorController@store')->name('doctor.store');
+Route::get('/doctor/all', 'DoctorController@all')->name('doctor.all');
+Route::get('/doctor/view/{id}', 'DoctorController@view')->where('id', '[0-9]+')->name('doctor.view');
+Route::get('/doctor/delete/{id}', 'DoctorController@destroy');
+Route::get('/doctor/edit/{id}', 'DoctorController@edit')->where('id', '[0-9]+')->name('doctor.edit');
+Route::post('/doctor/edit', 'DoctorController@store_edit')->name('doctor.store_edit');
 
+//Xrays
+Route::get('/xray/create', 'XrayController@create')->name('xray.create');
+Route::post('/xray/create', 'XrayController@store')->name('xray.store');
+Route::get('/xray/all', 'XrayController@all')->name('xray.all');
+Route::get('/xray/delete/{id}', 'XrayController@destroy');
+Route::get('/xray/edit/{id}', 'XrayController@edit')->where('id', '[0-9]+')->name('xray.edit');
+Route::post('/xray/edit', 'XrayController@store_edit')->name('xray.store_edit');
 
-//Treatments
-Route::get('/treatment/create', 'TreatmentController@create')->name('treatment.create');
-Route::post('/treatment/create', 'TreatmentController@store')->name('treatment.store');
-Route::get('/treatment/edit/{id}', 'TreatmentController@edit')->name('treatment.edit');
-Route::post('/treatment/edit', 'TreatmentController@store_edit')->name('treatment.store_edit');
-Route::get('/treatment/all', 'TreatmentController@all')->name('treatment.all');
-Route::get('/treatment/delete/{id}', 'TreatmentController@destroy')->where('id', '[0-9]+');
+//Sonography
+Route::get('/sonography/create', 'SonographyController@create')->name('sonography.create');
+Route::post('/sonography/create', 'SonographyController@store')->name('sonography.store');
+Route::get('/sonography/all', 'SonographyController@all')->name('sonography.all');
+Route::get('/sonography/delete/{id}', 'SonographyController@destroy');
+Route::get('/sonography/edit/{id}', 'SonographyController@edit')->where('id', '[0-9]+')->name('sonography.edit');
+Route::post('/sonography/edit', 'SonographyController@store_edit')->name('sonography.store_edit');
 
-//Prescriptions
-Route::get('/prescription/create', 'PrescriptionController@create')->name('prescription.create');
-Route::post('/prescription/create', 'PrescriptionController@store')->name('prescription.store');
-Route::get('/prescription/all', 'PrescriptionController@all')->name('prescription.all');
-Route::get('/prescription/view/{id}', 'PrescriptionController@view')->where('id', '[0-9]+')->name('prescription.view');
-Route::get('/prescription/pdf/{id}', 'PrescriptionController@pdf')->where('id', '[0-9]+');
-Route::get('/prescription/delete/{id}', 'PrescriptionController@destroy');
+//Blood Tests
+Route::get('/blood_test/create', 'BloodTestController@create')->name('blood_test.create');
+Route::post('/blood_test/create', 'BloodTestController@store')->name('blood_test.store');
+Route::get('/blood_test/all', 'BloodTestController@all')->name('blood_test.all');
+Route::get('/blood_test/delete/{id}', 'BloodTestController@destroy');
+Route::get('/blood_test/edit/{id}', 'BloodTestController@edit')->where('id', '[0-9]+')->name('blood_test.edit');
+Route::post('/blood_test/edit', 'BloodTestController@store_edit')->name('blood_test.store_edit');
 
 //Billing
 Route::get('/billing/create', 'BillingController@create')->name('billing.create');

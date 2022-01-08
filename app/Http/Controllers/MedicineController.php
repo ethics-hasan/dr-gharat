@@ -31,7 +31,7 @@ class MedicineController extends Controller
             ['name' => $request->name, 'description' => $request->description]
         );
 
-        return Redirect::back()->with('success', __('sentence.Medicine added Successfully'));
+        return Redirect::back()->with('success', __('sentence.Medicine Added Successfully'));
     }
 
     public function all()

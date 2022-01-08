@@ -78,19 +78,19 @@
                <hr class="sidebar-divider">
                <!-- Heading -->
                <div class="sidebar-heading">
-                  <?php echo e(__('sentence.Prescriptions')); ?>
+                  <?php echo e(__('sentence.Doctors')); ?>
 
                </div>
                <!-- Nav Item - Pages Collapse Menu -->
                <li class="nav-item">
                   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                  <i class="fas fa-fw fa-prescription"></i>
-                  <span><?php echo e(__('sentence.Prescriptions')); ?></span>
+                  <i class="fas fa-fw fa-users"></i>
+                  <span><?php echo e(__('sentence.Doctors')); ?></span>
                   </a>
                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                      <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo e(route('prescription.create')); ?>"><?php echo e(__('sentence.New Prescription')); ?></a>
-                        <a class="collapse-item" href="<?php echo e(route('prescription.all')); ?>"><?php echo e(__('sentence.All Prescriptions')); ?></a>
+                        <a class="collapse-item" href="<?php echo e(route('doctor.create')); ?>"><?php echo e(__('sentence.Add Doctor')); ?></a>
+                        <a class="collapse-item" href="<?php echo e(route('doctor.all')); ?>"><?php echo e(__('sentence.All Doctors')); ?></a>
                      </div>
                   </div>
                </li>
@@ -98,25 +98,38 @@
                <li class="nav-item">
                   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                   <i class="fas fa-fw fa-syringe"></i>
-                  <span><?php echo e(__('sentence.Medicines')); ?></span>
+                  <span><?php echo e(__('sentence.Xrays')); ?></span>
                   </a>
                   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                      <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo e(route('medicine.create')); ?>"><?php echo e(__('sentence.Add Medicine')); ?></a>
-                        <a class="collapse-item" href="<?php echo e(route('medicine.all')); ?>"><?php echo e(__('sentence.All Medicines')); ?></a>
+                        <a class="collapse-item" href="<?php echo e(route('xray.create')); ?>"><?php echo e(__('sentence.Add Xray')); ?></a>
+                        <a class="collapse-item" href="<?php echo e(route('xray.all')); ?>"><?php echo e(__('sentence.All Xrays')); ?></a>
+                     </div>
+                  </div>
+               </li>
+               <!-- Nav Item - Pages Collapse Menu -->
+               <li class="nav-item">
+                  <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseSonography" aria-expanded="true" aria-controls="collapseSonography">
+                  <i class="fas fa-fw fa-heartbeat"></i>
+                  <span><?php echo e(__('sentence.Sonography')); ?></span>
+                  </a>
+                  <div id="collapseSonography" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                     <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?php echo e(route('sonography.create')); ?>"><?php echo e(__('sentence.Add Sonography')); ?></a>
+                        <a class="collapse-item" href="<?php echo e(route('sonography.all')); ?>"><?php echo e(__('sentence.All Sonography')); ?></a>
                      </div>
                   </div>
                </li>
                <!-- Nav Item - Pages Collapse Menu -->
                <li class="nav-item">
                   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTests" aria-expanded="true" aria-controls="collapseTests">
-                  <i class="fas fa-fw fa-heartbeat"></i>
-                  <span><?php echo e(__('sentence.Treatments')); ?></span>
+                  <i class="fas fa-fw fa-syringe"></i>
+                  <span><?php echo e(__('sentence.Blood Tests')); ?></span>
                   </a>
                   <div id="collapseTests" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                      <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo e(route('treatment.create')); ?>"><?php echo e(__('sentence.Add Treatment')); ?></a>
-                        <a class="collapse-item" href="<?php echo e(route('treatment.all')); ?>"><?php echo e(__('sentence.All Treatments')); ?></a>
+                        <a class="collapse-item" href="<?php echo e(route('blood_test.create')); ?>"><?php echo e(__('sentence.Add Blood Test')); ?></a>
+                        <a class="collapse-item" href="<?php echo e(route('blood_test.all')); ?>"><?php echo e(__('sentence.All Blood Tests')); ?></a>
                      </div>
                   </div>
                </li>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-{{ __('sentence.All Medicines') }}
+{{ __('sentence.All Doctors') }}
 @endsection
 
 @section('content')
@@ -24,10 +24,10 @@
    <div class="card-header py-3">
       <div class="row">
          <div class="col-8">
-            <h6 class="m-0 font-weight-bold text-primary w-75 p-2">{{ __('sentence.All Medicines') }}</h6>
+            <h6 class="m-0 font-weight-bold text-primary w-75 p-2">{{ __('sentence.All Doctors') }}</h6>
          </div>
          <div class="col-4">
-            <a href="{{ route('medicine.create') }}" class="btn btn-primary float-right"><i class="fa fa-plus"></i> {{ __('sentence.Add Medicine') }}</a>
+            <a href="{{ route('doctor.create') }}" class="btn btn-primary float-right"><i class="fa fa-plus"></i> {{ __('sentence.Add Doctor') }}</a>
          </div>
       </div>
    </div>
@@ -38,19 +38,21 @@
                <tr>
                   <th>ID</th>
                   <th>{{ __('sentence.Name') }}</th>
-                  <th>{{ __('sentence.Description') }}</th>
+                  <th>{{ __('sentence.Phone No') }}</th>
+                  <th>{{ __('sentence.Clinic Name') }}</th>
                   <th class="text-center">{{ __('sentence.Actions') }}</th>
                </tr>
             </thead>
             <tbody>
-               @foreach($medicines as $medicine)
+               @foreach($doctors as $doctor)
                <tr>
-                  <td>{{ $medicine->id }}</td>
-                  <td>{{ $medicine->name }}</td>
-                  <td>{{ $medicine->description }}</td>
+                  <td>{{ $doctor->id }}</td>
+                  <td>{{ $doctor->name }}</td>
+                  <td>{{ $doctor->phone }}</td>
+                  <td>{{ $doctor->clinic_name }}</td>
                   <td class="text-center">
-                     <a href="{{ url('medicine/edit/'.$medicine->id) }}" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pen"></i></a>
-                     <a href="{{ url('medicine/delete/'.$medicine->id) }}" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
+                     <a href="{{ url('doctor/edit/'.$doctor->id) }}" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pen"></i></a>
+                     <a href="{{ url('doctor/delete/'.$doctor->id) }}" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
                   </td>
                </tr>
                @endforeach
