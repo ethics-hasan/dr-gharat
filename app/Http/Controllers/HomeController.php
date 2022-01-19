@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Patient;
-use App\Prescription;
 use App\Appointment;
 use App\Billing;
 use App\Billing_item;
@@ -37,7 +36,6 @@ class HomeController extends Controller
                                                 ->wheredate('date', '>', date('Y-m-d'))
                                                 ->where('visited', 0)
                                                 ->get();
-        $total_prescriptions = Prescription::all()->count();
         $total_payments = Billing::all()->count();
         $total_payments = Billing::all()->count();
         $total_payments_month = Billing_item::where('invoice_status', 'Paid')->whereMonth('created_at', date('m'))->sum('invoice_amount');
@@ -45,7 +43,6 @@ class HomeController extends Controller
 
         return view('home', [
             'total_patients' => $total_patients,
-            'total_prescriptions' => $total_prescriptions,
             'total_patients_today' => $total_patients_today,
             'total_appointments' => $total_appointments,
             'total_appointments_today' => $total_appointments_today,

@@ -43,6 +43,22 @@
                       </div>
                     </div>
                     <div class="form-group row">
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Referred Doctor') }}<font color="red">*</font></label>
+                      <div class="col-sm-9">
+                        <select class="form-control" name="doctor_id">
+                          <option value="">Select a doctor</option>
+
+                          @foreach ($doctors as $doctor)
+                              @if ($doctor->id === $patient->doctor_id)
+                                <option selected value="{{$doctor->id}}">{{$doctor->name}}</option>
+                                @continue
+                              @endif
+                              <option value="{{$doctor->id}}">{{$doctor->name}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
                       <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Birthday') }}</label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" id="birthday" name="birthday"  value="{{ $patient->birthday }}">

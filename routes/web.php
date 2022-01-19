@@ -73,6 +73,12 @@ Route::get('/blood_test/delete/{id}', 'BloodTestController@destroy');
 Route::get('/blood_test/edit/{id}', 'BloodTestController@edit')->where('id', '[0-9]+')->name('blood_test.edit');
 Route::post('/blood_test/edit', 'BloodTestController@store_edit')->name('blood_test.store_edit');
 
+//Treatments
+Route::get('/treatment/create', 'TreatmentController@create')->name('treatment.create');
+Route::post('/treatment/create', 'TreatmentController@store')->name('treatment.store');
+Route::get('/treatment/all', 'TreatmentController@all')->name('treatment.all');
+Route::get('/treatment/delete/{id}', 'TreatmentController@destroy');
+
 //Billing
 Route::get('/billing/create', 'BillingController@create')->name('billing.create');
 Route::post('/billing/create', 'BillingController@store')->name('billing.store');

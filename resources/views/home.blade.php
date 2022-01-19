@@ -83,7 +83,7 @@
             <div class="row no-gutters align-items-center">
                <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ __('sentence.Total Prescriptions') }}</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_prescriptions }}</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">NA</div>
                </div>
                <div class="col-auto">
                   <i class="fas fa-pills fa-2x text-gray-300"></i>

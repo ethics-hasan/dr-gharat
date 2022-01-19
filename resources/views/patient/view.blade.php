@@ -41,9 +41,6 @@
                           <a class="nav-link" id="appointements-tab" data-toggle="tab" href="#appointements" role="tab" aria-controls="appointements" aria-selected="false">{{ __('sentence.Appointment List') }}</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                          <a class="nav-link" id="prescriptions-tab" data-toggle="tab" href="#prescriptions" role="tab" aria-controls="prescriptions" aria-selected="false">{{ __('sentence.Prescription List') }}</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
                           <a class="nav-link" id="Billing-tab" data-toggle="tab" href="#Billing" role="tab" aria-controls="Billing" aria-selected="false">{{ __('sentence.Billing') }}</a>
                         </li>
                       </ul>
@@ -146,30 +143,6 @@
                           </table>
                         </div>
 
-                        <div class="tab-pane fade" id="prescriptions" role="tabpanel" aria-labelledby="prescriptions-tab">
-                          <table class="table">
-                            <tr>
-                              <td align="center">{{ __('sentence.Reference') }}</td>
-                              <td align="center">{{ __('sentence.Date') }}</td>
-                              <td align="center">{{ __('sentence.Actions') }}</td>
-                            </tr>
-                            @forelse($prescriptions as $prescription)
-                            <tr>
-                              <td align="center">{{ $prescription->reference }} </td>
-                              <td align="center">{{ $prescription->created_at }} </td>
-                              <td align="center">
-                                <a href="{{ url('prescription/view/'.$prescription->id) }}" class="btn btn-success btn-circle btn-sm"><i class="fa fa-eye"></i></a>
-                                {{-- <a href="{{ url('prescription/pdf/'.$prescription->id) }}" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-print"></i></a> --}}
-                                <a href="{{ url('prescription/delete/'.$prescription->id) }}" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
-                              </td>
-                            </tr>
-                             @empty
-                            <tr>
-                              <td colspan="3" align="center">{{ __('sentence.No prescription available') }}</td>
-                            </tr>
-                            @endforelse
-                          </table>
-                        </div>
                         <div class="tab-pane fade" id="Billing" role="tabpanel" aria-labelledby="Billing-tab">
                           <table class="table">
                             <tr>

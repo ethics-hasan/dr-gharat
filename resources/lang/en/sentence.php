@@ -63,6 +63,7 @@ return [
   'Cancel Appointment' => 'Cancel Appointment',
 
   'Treatments' => 'Treatments',
+  'Treatments / Follow Up' => 'Treatments / Follow Up',
   'Add Treatment' => 'Add Treatment',
   'All Treatments' => 'All Treatments',
   'Treatment Name' => 'Treatment Name',

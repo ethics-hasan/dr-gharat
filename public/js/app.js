@@ -65629,7 +65629,7 @@ var baseURL = 'http://localhost:8000';
     modal.find('#note').text(note);
     modal.find('#rdv_id').val(rdv_id);
     modal.find('#rdv_id2').val(rdv_id);
-  }); // Repeatables for billing and prescriptions
+  }); // Repeatables for billing and iptions
 
   $('#VIEWRDVModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal
@@ -65674,10 +65674,24 @@ var baseURL = 'http://localhost:8000';
 
   }); // Repeatables for billing and prescriptions
 
-  $(".treatment_labels .repeatable").repeatable({
-    addTrigger: ".treatment_labels .add",
-    deleteTrigger: ".treatment_labels .delete",
-    template: "#treatment_labels",
+  $(".xray_labels .repeatable").repeatable({
+    addTrigger: ".xray_labels .add",
+    deleteTrigger: ".xray_labels .delete",
+    template: "#xray_labels",
+    startWith: 1,
+    max: 5
+  });
+  $(".sonography_labels .repeatable").repeatable({
+    addTrigger: ".sonography_labels .add",
+    deleteTrigger: ".sonography_labels .delete",
+    template: "#sonography_labels",
+    startWith: 1,
+    max: 5
+  });
+  $(".blood_test_labels .repeatable").repeatable({
+    addTrigger: ".blood_test_labels .add",
+    deleteTrigger: ".blood_test_labels .delete",
+    template: "#blood_test_labels",
     startWith: 1,
     max: 5
   });

@@ -54,6 +54,18 @@
                      </div>
                   </div>
                </li>
+               <li class="nav-item">
+                  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTreatment" aria-expanded="true" aria-controls="collapseTreatment">
+                  <i class="fas fa-fw fa-syringe"></i>
+                  <span><?php echo e(__('sentence.Treatments / Follow Up')); ?></span>
+                  </a>
+                  <div id="collapseTreatment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                     <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?php echo e(route('treatment.create')); ?>"><?php echo e(__('sentence.Add Treatment')); ?></a>
+                        <a class="collapse-item" href="<?php echo e(route('treatment.all')); ?>"><?php echo e(__('sentence.All Treatments')); ?></a>
+                     </div>
+                  </div>
+               </li>
                <!-- Divider -->
                <hr class="sidebar-divider">
                <!-- Heading -->
