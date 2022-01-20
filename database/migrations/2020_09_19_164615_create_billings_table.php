@@ -21,6 +21,7 @@ class CreateBillingsTable extends Migration
             $table->string('payment_mode')->nullable();
             $table->string('payment_status')->nullable();
             $table->string('reference')->nullable();
+            $table->string('opd_no')->nullable();
 
             $table->timestamps();
         });

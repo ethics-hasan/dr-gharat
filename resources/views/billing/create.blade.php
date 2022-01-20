@@ -32,6 +32,10 @@
             </div>
             <div class="card-body">
                <div class="form-group">
+                  <label for="opd_no">{{ __('sentence.OPD Number') }}</label>
+                  <input class="form-control" type="text" value="{{$opd_no}}" name="opd_no" readonly>
+               </div>
+               <div class="form-group">
                   <label for="medicine">{{ __('sentence.Select Patient') }}</label>
                   <select class="form-control select2 select2-hidden-accessible" id="medicine" tabindex="-1" name="patient_id" aria-hidden="true">
                      <option></option>

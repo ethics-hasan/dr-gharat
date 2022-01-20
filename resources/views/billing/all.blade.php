@@ -39,6 +39,7 @@
                <tr>
                   <th>ID</th>
                   <th>{{ __('sentence.Patient') }}</th>
+                  <th>{{ __('sentence.OPD Number') }}</th>
                   <th>{{ __('sentence.Date') }}</th>
                   <th>{{ __('sentence.Amount') }}</th>
                   <th>{{ __('sentence.Status') }}</th>
@@ -50,6 +51,7 @@
                <tr>
                   <td>{{ $invoice->id }}</td>
                   <td><a href="{{ url('patient/view/'.$invoice->patient_id) }}"> {{ $invoice->Patient->name }} </a></td>
+                  <td>{{ $invoice->opd_no }}</td>
                   <td>{{ $invoice->created_at->format('d M Y') }}</td>
                   <td>{{ App\Setting::get_option('currency') }} {{ $invoice->Items->sum('invoice_amount')}}</td>
                   <td>

@@ -152,6 +152,8 @@ return [
     'Total' => 'Total',
     'VAT' => 'VAT',
     'Sub-Total' => 'Sub-Total',
+    'OPD Number' => 'OPD Number',
+
 
 
 

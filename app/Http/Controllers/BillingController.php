@@ -20,8 +20,15 @@ class BillingController extends Controller
     public function create()
     {
         $patients = Patient::all();
+        $last_billing = Billing::latest()->first();
 
-        return view('billing.create', ['patients' => $patients]);
+        if ($last_billing) {
+            $opd_no = date('y') . '/0' . ($last_billing->id + 1);
+        } else {
+            $opd_no = date('y') . '/0' . 1;
+        }
+
+        return view('billing.create', ['patients' => $patients, 'opd_no' => $opd_no]);
     }
 
     public function edit($id)
@@ -88,6 +95,7 @@ class BillingController extends Controller
         $billing->patient_id = $request->patient_id;
         $billing->payment_mode = $request->payment_mode;
         $billing->payment_status = $request->payment_status;
+        $billing->opd_no = $request->opd_no;
         $billing->reference = 'b'.rand(10000, 99999);
 
         $billing->save();
