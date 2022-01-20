@@ -23,11 +23,16 @@ class XrayController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'amount' => 'required'
         ]);
 
         $xray = Xray::updateOrCreate(
-            ['name' => $request->name, 'description' => $request->description]
+            [
+                'name' => $request->name,
+                'amount' => $request->amount,
+                'description' => $request->description
+            ]
         );
 
         return Redirect::route('xray.all')->with('success', __('sentence.Xray Added Successfully'));
@@ -51,11 +56,13 @@ class XrayController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
+            'amount' => 'required'
         ]);
 
         $xray = Xray::find($request->xray_id);
 
         $xray->name = $request->name;
+        $xray->amount = $request->amount;
         $xray->description = $request->description;
 
         $xray->save();

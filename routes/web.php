@@ -89,6 +89,9 @@ Route::get('/billing/delete/{id}', 'BillingController@destroy');
 Route::get('/billing/edit/{id}', 'BillingController@edit')->where('id', '[0-9]+')->name('billing.edit');
 Route::post('/billing/edit', 'BillingController@store_edit')->name('billing.store_edit');
 
+//Report Generation
+Route::get('/reports', 'ReportController@all')->name('report.all');
+
 //Settings
 /* Doctorino Settings */
 Route::get('/settings/doctorino_settings', 'SettingController@doctorino_settings')->name('doctorino_settings.edit');

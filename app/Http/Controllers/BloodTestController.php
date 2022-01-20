@@ -23,11 +23,16 @@ class BloodTestController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'amount' => 'required'
         ]);
 
         $blood_test = BloodTest::updateOrCreate(
-            ['name' => $request->name, 'description' => $request->description]
+            [
+                'name' => $request->name,
+                'amount' => $request->amount, 
+                'description' => $request->description
+            ]
         );
 
         return Redirect::route('blood_test.all')->with('success', __('sentence.Blood Test Added Successfully'));
@@ -50,12 +55,14 @@ class BloodTestController extends Controller
     public function store_edit(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'amount' => 'required'
         ]);
 
         $blood_test = BloodTest::find($request->blood_test_id);
 
         $blood_test->name = $request->name;
+        $blood_test->amount = $request->amount;
         $blood_test->description = $request->description;
 
         $blood_test->save();

@@ -33,6 +33,10 @@
                   {{ csrf_field() }}
                </div>
                <div class="form-group">
+                  <label for="exampleInputPassword1">Amount *</label>
+                  <input type="text" class="form-control" name="amount" id="GenericName" value="{{ $xray->amount }}">
+               </div>
+               <div class="form-group">
                   <label for="exampleInputPassword1">Description</label>
                   <input type="text" class="form-control" name="description" id="GenericName" value="{{ $xray->description }}">
                   <input type="hidden" name="xray_id" value="{{ $xray->id }}">

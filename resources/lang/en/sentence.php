@@ -193,6 +193,7 @@ return [
     'Referred Doctor' => 'Referred Doctor',
 
     'Doctors' => 'Doctors',
+    'Doctor' => 'Doctor',
     'Add Doctor' => 'Add Doctor',
     'All Doctors' => 'All Doctors',
     'Doctor Added Successfully' => 'Doctor Added Successfully',
@@ -223,4 +224,13 @@ return [
     'Edit Blood Test' => 'Edit Blood Test',
     'Blood Test Edited Successfully' => 'Blood Test Edited Successfully',
     'Blood Test Deleted Successfully' => 'Blood Test Deleted Successfully',
+
+    // Reports
+    'Report' => 'Report',
+    'Report Generation' => 'Report Generation',
+    'Total Patients' => 'Total Patients',
+    'Total Xrays' => 'Total Xrays',
+    'Total Sonography' => 'Total Sonography',
+    'Total Blood Tests' => 'Total Blood Tests',
+    'Total Amount' => 'Total Amount',
 ];

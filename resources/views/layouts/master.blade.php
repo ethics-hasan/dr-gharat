@@ -72,6 +72,24 @@
                <hr class="sidebar-divider">
                <!-- Heading -->
                <div class="sidebar-heading">
+                  {{ __('sentence.Report') }}
+               </div>
+               <!-- Nav Item - Pages Collapse Menu -->
+               <li class="nav-item">
+                  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport" aria-expanded="true" aria-controls="collapseReport">
+                  <i class="fas fa-fw fa-calendar-plus"></i>
+                  <span>{{ __('sentence.Report') }}</span>
+                  </a>
+                  <div id="collapseReport" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                     <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('report.all') }}">{{ __('sentence.Report Generation') }}</a>
+                     </div>
+                  </div>
+               </li>
+               <!-- Divider -->
+               <hr class="sidebar-divider">
+               <!-- Heading -->
+               <div class="sidebar-heading">
                   {{ __('sentence.Appointment') }}
                </div>
                <!-- Nav Item - Pages Collapse Menu -->

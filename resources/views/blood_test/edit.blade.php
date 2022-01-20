@@ -33,6 +33,10 @@
                   {{ csrf_field() }}
                </div>
                <div class="form-group">
+                  <label for="exampleInputPassword1">Amount *</label>
+                  <input type="text" class="form-control" name="amount" id="GenericName" value="{{ $blood_test->amount }}">
+               </div>
+               <div class="form-group">
                   <label for="exampleInputPassword1">Description</label>
                   <input type="text" class="form-control" name="description" id="GenericName" value="{{ $blood_test->description }}">
                   <input type="hidden" name="blood_test_id" value="{{ $blood_test->id }}">

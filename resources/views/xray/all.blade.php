@@ -38,6 +38,7 @@
                <tr>
                   <th>ID</th>
                   <th>{{ __('sentence.Name') }}</th>
+                  <th>{{ __('sentence.Amount') }}</th>
                   <th>{{ __('sentence.Description') }}</th>
                   <th class="text-center">{{ __('sentence.Actions') }}</th>
                </tr>
@@ -47,6 +48,7 @@
                <tr>
                   <td>{{ $xray->id }}</td>
                   <td>{{ $xray->name }}</td>
+                  <td>{{ $xray->amount }}</td>
                   <td>{{ $xray->description }}</td>
                   <td class="text-center">
                      <a href="{{ url('xray/edit/'.$xray->id) }}" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pen"></i></a>

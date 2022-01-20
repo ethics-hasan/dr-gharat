@@ -16,6 +16,7 @@ class CreateSonographiesTable extends Migration
         Schema::create('sonographies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('amount');
             $table->mediumText('description')->nullable();
             $table->timestamps();
         });

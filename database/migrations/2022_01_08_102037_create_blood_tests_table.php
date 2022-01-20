@@ -16,6 +16,7 @@ class CreateBloodTestsTable extends Migration
         Schema::create('blood_tests', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('amount');
             $table->mediumText('description')->nullable();
             $table->timestamps();
         });

@@ -23,11 +23,16 @@ class SonographyController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'amount' => 'required'
         ]);
 
         $sonography = Sonography::updateOrCreate(
-            ['name' => $request->name, 'description' => $request->description]
+            [
+                'name' => $request->name,
+                'amount' => $request->amount,
+                'description' => $request->description
+            ]
         );
 
         return Redirect::route('sonography.all')->with('success', __('sentence.Sonography Added Successfully'));
@@ -51,11 +56,13 @@ class SonographyController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
+            'amount' => 'required'
         ]);
 
         $sonography = Sonography::find($request->sonography_id);
 
         $sonography->name = $request->name;
+        $sonography->amount = $request->amount;
         $sonography->description = $request->description;
 
         $sonography->save();

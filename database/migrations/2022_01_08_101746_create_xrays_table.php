@@ -16,6 +16,7 @@ class CreateXraysTable extends Migration
         Schema::create('xrays', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('amount');
             $table->mediumText('description')->nullable();
             $table->timestamps();
         });

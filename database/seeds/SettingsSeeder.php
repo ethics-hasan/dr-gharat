@@ -116,5 +116,42 @@ class SettingsSeeder extends Seeder
             'password' => Hash::make('doctorino'),
             'role' => 'admin',
         ]);
+
+        // Add Xrays
+        DB::table('xrays')->insert([
+            'name' => 'Nasal Bone Xray',
+            'amount' => '350',
+            'description' => 'Test Description',
+        ]);
+        DB::table('xrays')->insert([
+            'name' => 'Chest PA View',
+            'amount' => '500',
+            'description' => 'Test Description',
+        ]);
+
+        // Add Sonography
+        DB::table('sonographies')->insert([
+            'name' => 'Whole Abdomen',
+            'amount' => '720',
+            'description' => 'Test Description',
+        ]);
+        DB::table('sonographies')->insert([
+            'name' => 'USG Left Arm',
+            'amount' => '450',
+            'description' => 'Test Description',
+        ]);
+
+        // Add Blood Tests
+        DB::table('blood_tests')->insert([
+            'name' => 'Complete blood count',
+            'amount' => '400',
+            'description' => 'Test Description',
+        ]);
+        DB::table('blood_tests')->insert([
+            'name' => 'C-reactive protein test',
+            'amount' => '680',
+            'description' => 'Test Description',
+        ]);
+
     }
 }
