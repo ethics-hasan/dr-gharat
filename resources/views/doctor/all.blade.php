@@ -47,9 +47,9 @@
                @foreach($doctors as $doctor)
                <tr>
                   <td>{{ $doctor->id }}</td>
-                  <td>{{ $doctor->name }}</td>
-                  <td>{{ $doctor->phone }}</td>
-                  <td>{{ $doctor->clinic_name }}</td>
+                  <td><a href="{{ url('doctor/view/'.$doctor->id) }}"> {{ $doctor->name }} </a></td>
+                  <td>{{ $doctor->phone ? $doctor->phone : '-' }}</td>
+                  <td>{{ $doctor->clinic_name ? $doctor->clinic_name : '-' }}</td>
                   <td class="text-center">
                      <a href="{{ url('doctor/edit/'.$doctor->id) }}" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pen"></i></a>
                      <a href="{{ url('doctor/delete/'.$doctor->id) }}" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>

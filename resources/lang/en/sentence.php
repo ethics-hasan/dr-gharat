@@ -208,6 +208,8 @@ return [
     'Edit Xray' => 'Edit Xray',
     'Xray Edited Successfully' => 'Xray Edited Successfully',
     'Xray Deleted Successfully' => 'Xray Deleted Successfully',
+    'Xray Name' => 'Xray Name',
+    'No Xrays Available' => 'No Xrays Available',
 
     'Sonography' => 'Sonography',
     'Add Sonography' => 'Add Sonography',
@@ -216,6 +218,8 @@ return [
     'Edit Sonography' => 'Edit Sonography',
     'Sonography Edited Successfully' => 'Sonography Edited Successfully',
     'Sonography Deleted Successfully' => 'Sonography Deleted Successfully',
+    'Sonography Name' => 'Sonography Name',
+    'No Sonography Available' => 'No Sonography Available',
 
     'Blood Tests' => 'Blood Tests',
     'Add Blood Test' => 'Add Blood Test',
@@ -224,6 +228,8 @@ return [
     'Edit Blood Test' => 'Edit Blood Test',
     'Blood Test Edited Successfully' => 'Blood Test Edited Successfully',
     'Blood Test Deleted Successfully' => 'Blood Test Deleted Successfully',
+    'Blood Test Name' => 'Blood Test Name',
+    'No Blood Tests Available' => 'No Blood Tests Available',
 
     // Reports
     'Report' => 'Report',

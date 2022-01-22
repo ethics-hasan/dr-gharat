@@ -77,7 +77,6 @@ Route::post('/blood_test/edit', 'BloodTestController@store_edit')->name('blood_t
 Route::get('/treatment/create', 'TreatmentController@create')->name('treatment.create');
 Route::post('/treatment/create', 'TreatmentController@store')->name('treatment.store');
 Route::get('/treatment/all', 'TreatmentController@all')->name('treatment.all');
-Route::get('/treatment/delete/{id}', 'TreatmentController@destroy');
 
 //Billing
 Route::get('/billing/create', 'BillingController@create')->name('billing.create');

@@ -102,9 +102,4 @@ class TreatmentController extends Controller
         ]);
     }
 
-    public function destroy($id)
-    {
-        Treatment::destroy($id);
-        return Redirect::route('treatment.all')->with('success', __('sentence.Treatment Deleted Successfully'));
-    }
 }
