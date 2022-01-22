@@ -121,6 +121,7 @@
                   <th>{{ __('sentence.Total Sonography') }}</th>
                   <th>{{ __('sentence.Total Blood Tests') }}</th>
                   <th>{{ __('sentence.Total Amount') }}</th>
+                  <th class="text-center">{{ __('sentence.Actions') }}</th>
                </tr>
             </thead>
             <tbody>
@@ -137,6 +138,9 @@
                   <td>{{ $doctor->sonography_count }}</td>
                   <td>{{ $doctor->blood_test_count }}</td>
                   <td>{{ App\Setting::get_option('currency') }} {{ $doctor->total_amount }}</td>
+                  <td class="text-center">
+                     <a href="{{ url('reports/pdf/'.$doctor->id) }}" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-print"></i></a>
+                  </td>
                </tr>
                @endforeach
             </tbody>

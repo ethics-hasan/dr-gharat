@@ -91,6 +91,7 @@ Route::post('/billing/edit', 'BillingController@store_edit')->name('billing.stor
 //Report Generation
 Route::get('/reports', 'ReportController@all')->name('report.all');
 Route::post('/reports', 'ReportController@filter')->name('report.filter');
+Route::get('/reports/pdf/{id}', 'ReportController@pdf')->where('id', '[0-9]+');
 
 //Settings
 /* Doctorino Settings */

@@ -14,6 +14,7 @@ use App\PatientBloodTest;
 use Illuminate\Http\Request;
 use Redirect;
 use DB;
+use PDF;
 
 class ReportController extends Controller
 {
@@ -134,4 +135,57 @@ class ReportController extends Controller
         ]);
     }
     
+    public function pdf($id)
+    {
+        $doctor = Doctor::findOrfail($id);
+        
+        $doctor_xrays = DB::table('xrays')
+                        ->select('*', 'xrays.name as xray_name', 'patients.name as patient_name')
+                        ->join('patient_xrays', 'xrays.id', '=', 'patient_xrays.xray_id')
+                        ->join('patients', 'patients.id', '=', 'patient_xrays.patient_id')
+                        ->where('patients.doctor_id', $doctor->id)
+                        ->get();
+                        
+        $doctor_sonography = DB::table('sonographies')
+                        ->select('*', 'sonographies.name as sonography_name', 'patients.name as patient_name')
+                        ->join('patient_sonographies', 'sonographies.id', '=', 'patient_sonographies.sonography_id')
+                        ->join('patients', 'patients.id', '=', 'patient_sonographies.patient_id')
+                        ->where('patients.doctor_id', $doctor->id)
+                        ->get();
+        
+        $doctor_blood_tests = DB::table('blood_tests')
+                        ->select('*', 'blood_tests.name as blood_test_name', 'patients.name as patient_name')
+                        ->join('patient_blood_tests', 'blood_tests.id', '=', 'patient_blood_tests.blood_test_id')
+                        ->join('patients', 'patients.id', '=', 'patient_blood_tests.patient_id')
+                        ->where('patients.doctor_id', $doctor->id)
+                        ->get();
+        
+        $doctor->total_amount = 0;
+        foreach ($doctor_xrays as $xray) {
+            $doctor->total_amount += $xray->amount;
+        }
+        foreach ($doctor_sonography as $sonography) {
+            $doctor->total_amount += $sonography->amount;
+        }
+        foreach ($doctor_blood_tests as $blood_test) {
+            $doctor->total_amount += $blood_test->amount;
+        }
+
+        // To view pdf template
+        // return view('report.pdf', [
+        //     'doctor' => $doctor, 
+        //     'doctor_xrays' => $doctor_xrays, 
+        //     'doctor_sonography' => $doctor_sonography,
+        //     'doctor_blood_tests' => $doctor_blood_tests,
+        // ]);
+
+        $pdf = PDF::loadView('report.pdf', [
+            'doctor' => $doctor, 
+            'doctor_xrays' => $doctor_xrays, 
+            'doctor_sonography' => $doctor_sonography,
+            'doctor_blood_tests' => $doctor_blood_tests,
+        ]);
+
+        return $pdf->download($doctor->name.'.pdf');
+    }
 }
