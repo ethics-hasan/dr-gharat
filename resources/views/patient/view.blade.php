@@ -16,6 +16,10 @@
                       <center><img src="{{ asset('img/patient-icon.png') }}" class="img-profile rounded-circle img-fluid"></center>
                        <h4 class="text-center"><b>{{ $patient->name }}</b></h4>
                             <hr>
+                            @isset($patient->referred_doctor)
+                            <p><b>{{ __('sentence.Referred Doctor') }} :</b> {{ $patient->referred_doctor }}</p>
+                            @endisset
+
                             @isset($patient->birthday)
                             <p><b>{{ __('sentence.Age') }} :</b> {{ $patient->birthday }} ({{ \Carbon\Carbon::parse($patient->birthday)->age }} Years)</p>
                             @endisset

@@ -10,6 +10,9 @@ use App\Doctor;
 use App\Xray;
 use App\Sonography;
 use App\BloodTest;
+use App\PatientXray;
+use App\PatientSonography;
+use App\PatientBloodTest;
 
 use Hash;
 use Redirect;
@@ -38,9 +41,9 @@ class PatientController extends Controller
         $blood_tests = BloodTest::all();
         
         return view('patient.create', [
-            'doctors' => $doctors, 
-            'xrays' => $xrays, 
-            'sonographies' => $sonographies, 
+            'doctors' => $doctors,
+            'xrays' => $xrays,
+            'sonographies' => $sonographies,
             'blood_tests' => $blood_tests
         ]);
     }
@@ -106,6 +109,48 @@ class PatientController extends Controller
         $patient->reason = $request->reason;
         $patient->save();
 
+        // Add Patient Xray
+        $xray_count = 0;
+        if ($request->xray_id) {
+            $xray_count = count($request->xray_id);
+        }
+        for ($x = 0; $x < $xray_count; $x++) {
+            $patient_xray = new PatientXray();
+        
+            $patient_xray->patient_id = $patient->id;
+            $patient_xray->xray_id = $request->xray_id[$x];
+        
+            $patient_xray->save();
+        }
+        
+        // Add Patient Sonography
+        $sonography_count = 0;
+        if ($request->sonography_id) {
+            $sonography_count = count($request->sonography_id);
+        }
+        for ($x = 0; $x < $sonography_count; $x++) {
+            $patient_sonography = new PatientSonography();
+        
+            $patient_sonography->patient_id = $patient->id;
+            $patient_sonography->sonography_id = $request->sonography_id[$x];
+        
+            $patient_sonography->save();
+        }
+        
+        // Add Patient Blood Test
+        $blood_test_count = 0;
+        if ($request->blood_test_id) {
+            $blood_test_count = count($request->blood_test_id);
+        }
+        for ($x = 0; $x < $blood_test_count; $x++) {
+            $patient_blood_test = new PatientBloodTest();
+        
+            $patient_blood_test->patient_id = $patient->id;
+            $patient_blood_test->blood_test_id = $request->blood_test_id[$x];
+        
+            $patient_blood_test->save();
+        }
+        
         return Redirect::route('patient.all')->with('success', __('sentence.Patient Created Successfully'));
     }
 
@@ -115,6 +160,12 @@ class PatientController extends Controller
         $patient = Patient::findOrfail($id);
         $appointments = Appointment::where('patient_id', $id)->OrderBy('id', 'Desc')->get();
         $invoices = Billing::where('patient_id', $id)->OrderBy('id', 'Desc')->get();
+
+        if ($patient->doctor_id) {
+            $doctor = Doctor::findOrfail($patient->doctor_id);
+            $patient->referred_doctor = $doctor->name;
+        }
+
         return view('patient.view', ['patient' => $patient, 'appointments' => $appointments, 'invoices' => $invoices]);
     }
 }

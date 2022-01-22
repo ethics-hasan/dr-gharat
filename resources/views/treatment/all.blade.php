@@ -48,7 +48,7 @@
                @foreach($patients as $patient)
                <tr>
                   <td>{{ $patient->id }}</td>
-                  <td>{{ $patient->name }}</td>
+                  <td><a href="{{ url('patient/view/'.$patient->id) }}"> {{ $patient->name }} </a></td>
                   <td>{{ $patient->xray_count }}</td>
                   <td>{{ $patient->sonography_count }}</td>
                   <td>{{ $patient->blood_test_count }}</td>
