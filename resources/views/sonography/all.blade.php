@@ -48,7 +48,7 @@
                <tr>
                   <td>{{ $sonography->id }}</td>
                   <td>{{ $sonography->name }}</td>
-                  <td>{{ $sonography->amount }}</td>
+                  <td>{{ App\Setting::get_option('currency') }} {{ $sonography->amount }}</td>
                   <td>{{ $sonography->description }}</td>
                   <td class="text-center">
                      <a href="{{ url('sonography/edit/'.$sonography->id) }}" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pen"></i></a>

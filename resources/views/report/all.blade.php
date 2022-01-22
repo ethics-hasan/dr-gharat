@@ -55,7 +55,7 @@
                   <td>{{ $doctor->xray_count }}</td>
                   <td>{{ $doctor->sonography_count }}</td>
                   <td>{{ $doctor->blood_test_count }}</td>
-                  <td>{{ $doctor->total_amount }}</td>
+                  <td>{{ App\Setting::get_option('currency') }} {{ $doctor->total_amount }}</td>
                </tr>
                @endforeach
             </tbody>

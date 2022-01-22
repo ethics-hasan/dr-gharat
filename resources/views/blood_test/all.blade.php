@@ -48,7 +48,7 @@
                <tr>
                   <td>{{ $blood_test->id }}</td>
                   <td>{{ $blood_test->name }}</td>
-                  <td>{{ $blood_test->amount }}</td>
+                  <td>{{ App\Setting::get_option('currency') }} {{ $blood_test->amount }}</td>
                   <td>{{ $blood_test->description }}</td>
                   <td class="text-center">
                      <a href="{{ url('blood_test/edit/'.$blood_test->id) }}" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pen"></i></a>

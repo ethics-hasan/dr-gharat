@@ -57,7 +57,7 @@
                                   <td>{{ ++$x }}</td>
                                   <td><a href="{{ url('patient/view/'.$xray->patient_id) }}"> {{ $xray->patient_name }} </a></td>
                                   <td>{{ $xray->xray_name }}</td>
-                                  <td>{{ $xray->amount }}</td>
+                                  <td>{{ App\Setting::get_option('currency') }} {{ $xray->amount }}</td>
                                 </tr>
                                 @empty
                                 <tr>
@@ -82,7 +82,7 @@
                                   <td>{{ ++$y }}</td>
                                   <td><a href="{{ url('patient/view/'.$sonography->patient_id) }}"> {{ $sonography->patient_name }} </a></td>
                                   <td>{{ $sonography->sonography_name }}</td>
-                                  <td>{{ $sonography->amount }}</td>
+                                  <td>{{ App\Setting::get_option('currency') }} {{ $sonography->amount }}</td>
                                 </tr>
                                 @empty
                                 <tr>
@@ -108,7 +108,7 @@
                                   <td>{{ ++$z }}</td>
                                   <td><a href="{{ url('patient/view/'.$blood_test->patient_id) }}"> {{ $blood_test->patient_name }} </a></td>
                                   <td>{{ $blood_test->blood_test_name }}</td>
-                                  <td>{{ $blood_test->amount }}</td>
+                                  <td>{{ App\Setting::get_option('currency') }} {{ $blood_test->amount }}</td>
                                 </tr>
                                 @empty
                                 <tr>

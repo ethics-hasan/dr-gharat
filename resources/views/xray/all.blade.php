@@ -48,7 +48,7 @@
                <tr>
                   <td>{{ $xray->id }}</td>
                   <td>{{ $xray->name }}</td>
-                  <td>{{ $xray->amount }}</td>
+                  <td>{{ App\Setting::get_option('currency') }} {{ $xray->amount }}</td>
                   <td>{{ $xray->description }}</td>
                   <td class="text-center">
                      <a href="{{ url('xray/edit/'.$xray->id) }}" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pen"></i></a>
