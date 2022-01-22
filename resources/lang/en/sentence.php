@@ -239,4 +239,6 @@ return [
     'Total Sonography' => 'Total Sonography',
     'Total Blood Tests' => 'Total Blood Tests',
     'Total Amount' => 'Total Amount',
+    'Filters' => 'Filters',
+
 ];

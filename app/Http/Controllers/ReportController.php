@@ -22,12 +22,23 @@ class ReportController extends Controller
         $this->middleware('auth');
     }
 
-    public function all()
+    public function getReportData($year = NULL, $month = NULL, $date = NULL)
     {
         $doctors = Doctor::all();
 
         foreach ($doctors as $doctor) {
-            $patients = Patient::where('doctor_id', $doctor->id)->get();
+            $patients_query = Patient::where('doctor_id', $doctor->id);
+            if ($year) {
+                $patients_query->whereYear('created_at', $year);
+            }
+            if ($month) {
+                $patients_query->whereMonth('created_at', $month);
+            }
+            if ($date) {
+                $patients_query->whereDate('created_at', $date);
+            }
+
+            $patients = $patients_query->get();                 
             $doctor->patient_count = $patients->count();
 
             $doctor->xray_count = 0;
@@ -36,35 +47,91 @@ class ReportController extends Controller
 
             $doctor->total_amount = 0;
 
-            foreach ($patients as $patient) {
-                $doctor->xray_count += PatientXray::where('patient_id', $patient->id)->count();
-                $doctor->sonography_count += PatientSonography::where('patient_id', $patient->id)->count();
-                $doctor->blood_test_count += PatientBloodTest::where('patient_id', $patient->id)->count();
+            $all_patients = Patient::where('doctor_id', $doctor->id)->get();
 
+            foreach ($all_patients as $patient) {
+                $doctor_xray_count_query = PatientXray::where('patient_id', $patient->id);
+                $doctor_sonography_count_query = PatientSonography::where('patient_id', $patient->id);
+                $doctor_blood_test_count_query = PatientBloodTest::where('patient_id', $patient->id);
 
-                $doctor->total_amount += DB::table('patient_xrays')
+                $xray_total_amount_query = DB::table('patient_xrays')
                                         ->select('xrays.amount')
                                         ->join('xrays', 'xrays.id', '=', 'patient_xrays.xray_id')
-                                        ->where('patient_xrays.patient_id', $patient->id)
-                                        ->sum('xrays.amount');
+                                        ->where('patient_xrays.patient_id', $patient->id);
                             
-                $doctor->total_amount += DB::table('patient_sonographies')
+                $sonography_total_amount_query = DB::table('patient_sonographies')
                                         ->select('sonographies.amount')
                                         ->join('sonographies', 'sonographies.id', '=', 'patient_sonographies.sonography_id')
-                                        ->where('patient_sonographies.patient_id', $patient->id)
-                                        ->sum('sonographies.amount');
+                                        ->where('patient_sonographies.patient_id', $patient->id);
                 
-                $doctor->total_amount += DB::table('patient_blood_tests')
+                $blood_test_total_amount_query = DB::table('patient_blood_tests')
                                         ->select('blood_tests.amount')
                                         ->join('blood_tests', 'blood_tests.id', '=', 'patient_blood_tests.blood_test_id')
-                                        ->where('patient_blood_tests.patient_id', $patient->id)
-                                        ->sum('blood_tests.amount');
+                                        ->where('patient_blood_tests.patient_id', $patient->id);
+
+                if ($year) {
+                    $doctor_xray_count_query->whereYear('created_at', $year);
+                    $doctor_sonography_count_query->whereYear('created_at', $year);
+                    $doctor_blood_test_count_query->whereYear('created_at', $year);
+                    $xray_total_amount_query->whereYear('patient_xrays.created_at', $year);
+                    $sonography_total_amount_query->whereYear('patient_sonographies.created_at', $year);
+                    $blood_test_total_amount_query->whereYear('patient_blood_tests.created_at', $year);
+                }
+                if ($month) {
+                    $doctor_xray_count_query->whereMonth('created_at', $month);
+                    $doctor_sonography_count_query->whereMonth('created_at', $month);
+                    $doctor_blood_test_count_query->whereMonth('created_at', $month);
+                    $xray_total_amount_query->whereMonth('patient_xrays.created_at', $month);
+                    $sonography_total_amount_query->whereMonth('patient_sonographies.created_at', $month);
+                    $blood_test_total_amount_query->whereMonth('patient_blood_tests.created_at', $month);
+                }
+                if ($date) {
+                    $doctor_xray_count_query->whereDate('created_at', $date);
+                    $doctor_sonography_count_query->whereDate('created_at', $date);
+                    $doctor_blood_test_count_query->whereDate('created_at', $date);
+                    $xray_total_amount_query->whereDate('patient_xrays.created_at', $date);
+                    $sonography_total_amount_query->whereDate('patient_sonographies.created_at', $date);
+                    $blood_test_total_amount_query->whereDate('patient_blood_tests.created_at', $date);
+                }
+                            
+                $doctor->xray_count += $doctor_xray_count_query->count();
+                $doctor->sonography_count += $doctor_sonography_count_query->count();
+                $doctor->blood_test_count += $doctor_blood_test_count_query->count();
+                        
+                $doctor->total_amount += $xray_total_amount_query->sum('xrays.amount');
+                $doctor->total_amount += $sonography_total_amount_query->sum('sonographies.amount');
+                $doctor->total_amount += $blood_test_total_amount_query->sum('blood_tests.amount');
             }
         }
 
-        return view('report.all', ['doctors' => $doctors]);
+        return [
+            'doctors' => $doctors,
+            'year' => $year,
+            'month' => $month,
+            'date' => $date
+        ];
     }
 
+    public function all()
+    {
+        $report_data = $this->getReportData(date("Y"), date("m"));
+        return view('report.all', [
+            'doctors' => $report_data['doctors'],
+            'year' => $report_data['year'],
+            'month' => $report_data['month'],
+            'date' => $report_data['date']
+        ]);
+    }
 
+    public function filter(Request $request)
+    {
+        $report_data = $this->getReportData($request->year, $request->month, $request->date);
+        return view('report.all', [
+            'doctors' => $report_data['doctors'],
+            'year' => $report_data['year'],
+            'month' => $report_data['month'],
+            'date' => $report_data['date']
+        ]);
+    }
     
 }
