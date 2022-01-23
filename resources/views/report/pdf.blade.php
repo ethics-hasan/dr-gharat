@@ -12,7 +12,7 @@
 </style>
 <body>
     
-    <h5>Report generated on : {{ Carbon\Carbon::now()->format('d M Y - H:m:s') }}</h5>
+    <h5>Report generated on : {{ Carbon\Carbon::now()->format('d M Y - H:i:s') }}</h5>
     <h1 style="text-align: center;">{{$doctor->name}}</h1>
     
     <h3>Xrays</h3>
