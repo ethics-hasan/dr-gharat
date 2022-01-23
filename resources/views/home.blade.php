@@ -146,7 +146,7 @@
    </div>
 </div>
 
-<div class="alert alert-warning">
+{{-- <div class="alert alert-warning">
    @if ($upcoming_appointments->count())
    <h6>Upcoming Appointments</h6>
    <ul>
@@ -157,7 +157,7 @@
    @else
    <h6>No Appointments for next 3 days</h6>
    @endif
-</div>
+</div> --}}
 
 <div class="row">
    <div class="col">
