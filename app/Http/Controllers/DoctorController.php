@@ -113,6 +113,13 @@ class DoctorController extends Controller
 
     public function destroy($id)
     {
+        $patients = Patient::where('doctor_id', $id)->get();
+
+        foreach ($patients as $patient) {
+            $patient->doctor_id = NULL;
+            $patient->save();
+        }
+
         Doctor::destroy($id);
         return Redirect::route('doctor.all')->with('success', __('sentence.Doctor Deleted Successfully'));
     }

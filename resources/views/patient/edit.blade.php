@@ -46,7 +46,13 @@
                       <label for="inputPassword3" class="col-sm-3 col-form-label">{{ __('sentence.Referred Doctor') }}<font color="red">*</font></label>
                       <div class="col-sm-9">
                         <select class="form-control" name="doctor_id">
-                          <option value="">Select a doctor</option>
+                          <option selected disabled>~ Select a doctor ~</option>
+
+                          @if (!$patient->doctor_id)
+                            <option selected value="0">None</option>
+                          @else
+                            <option value="0">None</option>
+                          @endif
 
                           @foreach ($doctors as $doctor)
                               @if ($doctor->id === $patient->doctor_id)

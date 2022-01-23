@@ -60,16 +60,16 @@ class PatientController extends Controller
     {
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required'],
+            'phone' => ['required', 'min:10'],
             'gender' => ['required'],
-            'doctor_id' => ['required','exists:doctors,id']
+            'doctor_id' => ['required']
         ]);
 
 
         $patient = Patient::where('id', $request->id)
                      ->update([
                         'name' => $request->name,
-                        'doctor_id' => $request->doctor_id,
+                        'doctor_id' => $request->doctor_id ? $request->doctor_id : NULL,
                         'birthday' => $request->birthday,
                         'phone' => $request->phone,
                         'gender' => $request->gender,
@@ -90,15 +90,15 @@ class PatientController extends Controller
     {
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required'],
+            'phone' => ['required', 'min:10'],
             'gender' => ['required'],
-            'doctor_id' => ['required','exists:doctors,id']
+            'doctor_id' => ['required']
         ]);
 
 
         $patient = new Patient();
         $patient->name = $request->name;
-        $patient->doctor_id = $request->doctor_id;
+        $patient->doctor_id = $request->doctor_id ? $request->doctor_id : NULL;
         $patient->birthday = $request->birthday;
         $patient->phone = $request->phone;
         $patient->gender = $request->gender;
