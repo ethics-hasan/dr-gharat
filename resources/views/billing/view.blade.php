@@ -35,6 +35,7 @@
                <div class="col-md-3">
                   <p><b>{{ __('sentence.Date') }} :</b> {{ $billing->created_at->format('d-m-Y') }}<br>
                      <b>{{ __('sentence.Reference') }} :</b> {{ $billing->reference }}<br>
+                     <b>{{ __('sentence.OPD Number') }} :</b> {{ $billing->opd_no }}<br>
                      <b>{{ __('sentence.Patient Name') }} :</b> {{ $billing->Patient->name }}
                   </p>
                </div>

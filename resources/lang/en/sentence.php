@@ -153,6 +153,7 @@ return [
     'VAT' => 'VAT',
     'Sub-Total' => 'Sub-Total',
     'OPD Number' => 'OPD Number',
+    'View billing' => 'View billing',
 
 
 

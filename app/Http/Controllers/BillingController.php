@@ -150,12 +150,25 @@ class BillingController extends Controller
     {
         $billing = Billing::findOrfail($id);
         $billing_items = Billing_item::where('billing_id', $id)->get();
+        $amount_paid = Billing_item::where('billing_id', $id)->where('invoice_status', 'Paid')->sum('invoice_amount');
+        $amount_balance = Billing_item::where('billing_id', $id)->where('invoice_status', 'Balance')->sum('invoice_amount');
 
-        view()->share(['billing' => $billing, 'billing_items' => $billing_items]);
-        $pdf = PDF::loadView('billing.pdf_view', ['billing' => $billing, 'billing_items' => $billing_items]);
+        // return view('billing.pdf', [
+        //     'billing' => $billing,
+        //     'billing_items' => $billing_items,
+        //     'amount_paid' => $amount_paid,
+        //     'amount_balance' => $amount_balance
+        // ]);
+
+        $pdf = PDF::loadView('billing.pdf', [
+            'billing' => $billing,
+            'billing_items' => $billing_items,
+            'amount_paid' => $amount_paid,
+            'amount_balance' => $amount_balance
+        ]);
 
         // download PDF file with download method
-        return $pdf->download($billing->Patient->name.'_invoice.pdf');
+        return $pdf->download($billing->opd_no.'-Invoice.pdf');
     }
 
     public function destroy($id)
